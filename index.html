@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<!--
+  Budget Bill Tracker — September 2026 (built from template v4)
+  ════════════════════════════════
+  Companion spec: Budget_Build_And_Workflow_Spec_v4_26_09_02.md
+  Companion changelog: Budget_Session_Changelog_v3_26_09_02.md
+
+  LOCKED TEMPLATE — DO NOT MODIFY MECHANICS DURING A BUILD SESSION.
+  The only sections Claude may edit are:
+    1. <title> — update month/year
+    2. // [BEGIN INJECT BILLS]
+var BILLS = [
+  { id: "entertainment_birthday", name: "Birthday \u2014 Postage", week: "Wk1", amount: 9.19, paid: false, type: "manual", cat: "ENT", late: false },
+  { id: "debt_payment_credit_cards_cap1_inez", name: "Cap One \u2014 Inez", week: "Wk1", amount: 150.0, paid: false, type: "manual", cat: "DEBT", late: false },
+  { id: "business_hamly_vendors", name: "Claude (Anthropic)", week: "Wk1", amount: 20.0, paid: false, type: "automated", cat: "BUSINESS", late: false },
+  { id: "debt_payment_delta_loan", name: "Delta Loan", week: "Wk1", amount: 400.0, paid: false, type: "manual", cat: "DEBT", late: false },
+  { id: "util_gas", name: "Gas Utility", week: "Wk1", amount: 50.0, paid: false, type: "manual", cat: "UTIL", late: false },
+  { id: "auto_gas_wk1", name: "Gas \u2014 Wk 1", week: "Wk1", amount: 100.0, paid: false, type: "manual", cat: "other", late: false },
+  { id: "food_groceries_wk1", name: "Groceries \u2014 Wk 1", week: "Wk1", amount: 350.0, paid: false, type: "manual", cat: "other", late: false },
+  { id: "business_hamly_vendors_02", name: "Higgsfield AI", week: "Wk1", amount: 49.0, paid: false, type: "automated", cat: "BUSINESS", late: false },
+  { id: "kids_school_purchases", name: "Kids School", week: "Wk1", amount: 10.0, paid: false, type: "manual", cat: "other", late: false },
+  { id: "business_hamly_vendors_03", name: "Linode", week: "Wk1", amount: 12.0, paid: false, type: "automated", cat: "BUSINESS", late: false },
+  { id: "util_softwareexpenses_office365", name: "Office 365", week: "Wk1", amount: 4.2, paid: false, type: "automated", cat: "UTIL", late: false },
+  { id: "debt_payment_paypal", name: "PayPal Credit", week: "Wk1", amount: 75.0, paid: false, type: "manual", cat: "DEBT", late: false },
+  { id: "util_phone", name: "Phone", week: "Wk1", amount: 92.0, paid: false, type: "manual", cat: "UTIL", late: false },
+  { id: "util_power_grandview_late", name: "Power \u2014 Grandview (carry)", week: "Wk1", amount: 176.0, paid: false, type: "manual", cat: "UTIL", late: true },
+  { id: "business_realestate_supra", name: "Supra (RE)", week: "Wk1", amount: 16.81, paid: false, type: "automated", cat: "BUSINESS", late: false },
+  { id: "debt_payment_synchrony_auto_chris_late", name: "Synchrony \u2014 Chris (carry)", week: "Wk1", amount: 150.0, paid: false, type: "manual", cat: "DEBT", late: true },
+  { id: "util_trashtaxi", name: "Trash Taxi", week: "Wk1", amount: 87.7, paid: false, type: "manual", cat: "UTIL", late: false },
+  { id: "auto_gas_wk2", name: "Gas \u2014 Wk 2", week: "Wk2", amount: 100.0, paid: false, type: "manual", cat: "other", late: false },
+  { id: "food_groceries_wk2", name: "Groceries \u2014 Wk 2", week: "Wk2", amount: 350.0, paid: false, type: "manual", cat: "other", late: false },
+  { id: "util_country_fi_homeinsurance", name: "Home Insurance", week: "Wk2", amount: 247.28, paid: false, type: "manual", cat: "UTIL", late: false },
+  { id: "kids_school_purchases_02", name: "Kids School", week: "Wk2", amount: 10.0, paid: false, type: "manual", cat: "other", late: false },
+  { id: "business_hamly_vendors_05", name: "Lalal.ai", week: "Wk2", amount: 9.99, paid: false, type: "automated", cat: "BUSINESS", late: false },
+  { id: "entertainment_netflix", name: "Netflix", week: "Wk2", amount: 19.99, paid: false, type: "automated", cat: "ENT", late: false },
+  { id: "debt_payment_lge_autoloan_2024chryslerpacifica", name: "Pacifica Loan", week: "Wk2", amount: 720.0, paid: false, type: "manual", cat: "DEBT", late: false },
+  { id: "business_hamly_vendors_06", name: "Suno", week: "Wk2", amount: 10.0, paid: false, type: "automated", cat: "BUSINESS", late: false },
+  { id: "util_zander", name: "Zander Insurance", week: "Wk2", amount: 12.9, paid: false, type: "automated", cat: "UTIL", late: false },
+  { id: "credit_payment_credit_cards_chase_amazon", name: "Chase Amazon Card", week: "Wk3", amount: 100.0, paid: false, type: "manual", cat: "DEBT", late: false },
+  { id: "business_hamly_vendors_07", name: "ChatGPT (OpenAI)", week: "Wk3", amount: 20.0, paid: false, type: "automated", cat: "BUSINESS", late: false },
+  { id: "util_placeholder_insurance2023", name: "Chris Life Insurance", week: "Wk3", amount: 214.82, paid: false, type: "automated", cat: "UTIL", late: false },
+  { id: "auto_gas_wk3", name: "Gas \u2014 Wk 3", week: "Wk3", amount: 100.0, paid: false, type: "manual", cat: "other", late: false },
+  { id: "food_groceries_wk3", name: "Groceries \u2014 Wk 3", week: "Wk3", amount: 350.0, paid: false, type: "manual", cat: "other", late: false },
+  { id: "kids_school_purchases_03", name: "Kids School", week: "Wk3", amount: 10.0, paid: false, type: "manual", cat: "other", late: false },
+  { id: "business_hamly_vendors_09", name: "Midjourney", week: "Wk3", amount: 10.6, paid: false, type: "automated", cat: "BUSINESS", late: false },
+  { id: "business_hamly_vendors_08", name: "Obsidian", week: "Wk3", amount: 10.0, paid: false, type: "automated", cat: "BUSINESS", late: false },
+  { id: "entertainment_plexpass", name: "Plex Pass", week: "Wk3", amount: 6.99, paid: false, type: "automated", cat: "ENT", late: false },
+  { id: "debt_payment_synchrony_auto_inez", name: "Synchrony \u2014 Inez", week: "Wk3", amount: 150.0, paid: false, type: "manual", cat: "DEBT", late: false },
+  { id: "util_water", name: "Water", week: "Wk3", amount: 110.37, paid: false, type: "manual", cat: "UTIL", late: false },
+  { id: "med_ymca", name: "YMCA", week: "Wk3", amount: 139.0, paid: false, type: "automated", cat: "MED", late: false },
+  { id: "util_country_fi_autoinsurance", name: "Auto Insurance", week: "Wk4", amount: 431.43, paid: false, type: "manual", cat: "UTIL", late: false },
+  { id: "random_fee_monthly_maintenance_fee", name: "Bank Maint. Fee", week: "Wk4", amount: 12.0, paid: false, type: "automated", cat: "RANDOM", late: false },
+  { id: "business_hamly_vendors_04", name: "Business Hamly Vendors", week: "Wk4", amount: 22.19, paid: false, type: "manual", cat: "BUSINESS", late: false },
+  { id: "auto_gas_wk4", name: "Gas \u2014 Wk 4", week: "Wk4", amount: 100.0, paid: false, type: "manual", cat: "other", late: false },
+  { id: "food_groceries_wk4", name: "Groceries \u2014 Wk 4", week: "Wk4", amount: 350.0, paid: false, type: "manual", cat: "other", late: false },
+  { id: "util_placeholder_insurance2023_02", name: "Inez Life Insurance", week: "Wk4", amount: 112.0, paid: false, type: "automated", cat: "UTIL", late: false },
+  { id: "kids_school_purchases_04", name: "Kids School", week: "Wk4", amount: 10.0, paid: false, type: "manual", cat: "other", late: false },
+  { id: "util_softwareexpenses_office365_02", name: "Office 365", week: "Wk4", amount: 26.26, paid: false, type: "automated", cat: "UTIL", late: false },
+  { id: "entertainment_phoneapppurchases", name: "Phone App Purchases", week: "Wk4", amount: 18.0, paid: false, type: "manual", cat: "ENT", late: false },
+  { id: "util_power_grandview", name: "Power \u2014 Grandview", week: "Wk4", amount: 242.0, paid: false, type: "manual", cat: "UTIL", late: false },
+  { id: "debt_payment_synchrony_auto_chris", name: "Synchrony \u2014 Chris", week: "Wk4", amount: 150.0, paid: false, type: "manual", cat: "DEBT", late: false },
+  { id: "giving_tithes", name: "Tithes", week: "Wk4", amount: 1044.91, paid: false, type: "manual", cat: "other", late: false },
+  { id: "auto_maintenance", name: "Auto Maintenance", week: "Wk5", amount: 100.0, paid: false, type: "manual", cat: "other", late: false }
+];
+// [END INJECT BILLS]
+    3. // [BEGIN INJECT WEEKS]
+var WEEKS = [
+  { key: 'Wk1', label: 'Week 1', dates: 'Sep 1 – Sep 6' },
+  { key: 'Wk2', label: 'Week 2', dates: 'Sep 7 – Sep 13' },
+  { key: 'Wk3', label: 'Week 3', dates: 'Sep 14 – Sep 20' },
+  { key: 'Wk4', label: 'Week 4', dates: 'Sep 21 – Sep 30' },
+  { key: 'Wk5', label: 'Misc / No Due Date', dates: 'Ongoing' }
+];
+// [END INJECT WEEKS]
+    4. SESSION_KEY constant — update to budget/bills/{month_key}
+    5. Header <title> text node inside <h1> element
+    6. _config block — Firebase project credentials (update when switching
+       Firebase projects; must match the project the bill tracker deploys to)
+
+  Any change outside those six locations is a template version bump.
+  See spec §4 and §8 before touching anything else.
+
+  Template version history:
+    v4 — 2026-09-02 — FCM push notification support added.
+         Three additions (all outside locked mechanics):
+           a) firebase-messaging-compat.js SDK tag in <head>
+           b) Service Worker registration script in <head>
+           c) User selector modal (CSS + HTML + JS) — first-launch only,
+              persists choice to localStorage.budgetUser ('chris'|'inez')
+           d) FCM token registration IIFE — requests notification permission,
+              calls getToken() with VAPID key, writes token to
+              users/{budgetUser}/fcmTokens/budget in Firebase RTDB.
+         VAPID public key: BITDVXdf1nWavtpCJbttjvVUUsuOxyPFirMBYqtw2RzJVbnVTSZKNfTGk64pphhNdsvrDqwH1gPDfedPsh2vLyU
+         Token path: users/{chris|inez}/fcmTokens/budget
+         No mechanics changed. Inject blocks, FB sync module, drag/drop,
+         touch bridge all unchanged.
+    v3 — 2026-09-02 — PWA meta tags added to <head>. No mechanics changed.
+         Enables "Add to Home Screen" install on iOS (Safari) and Android
+         (Chrome). Requires manifest.json, firebase-messaging-sw.js, and
+         icons/icon-192.png + icon-512.png at the missionbudget01 repo root.
+    v2 — 2026-09-02 — Firebase config corrected to mcdonald-budget-01.
+         Added _config as 6th editable location in locked comment.
+         No mechanics changed.
+    v1 — 2026-09-01 — Initial. Drag/drop (desktop + mobile touch bridge),
+         Firebase RTDB sync, week-scoped paid/unpaid columns, summary bar,
+         auto/manual tags, late carry-forward badge.
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bills — September 2026</title>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     PWA — Progressive Web App install support (template v3)
+     ═══════════════════════════════════════════════════════════════════════
+     Makes the app installable as a home screen icon on iOS and Android.
+
+     iOS: open in Safari → Share → Add to Home Screen (Safari only, not Chrome)
+     Android: open in Chrome → install banner, or three-dot menu → Add to
+     Home Screen.
+
+     Required files at the missionbudget01 GitHub Pages repo root:
+       manifest.json              PWA manifest (name, icons, display mode)
+       firebase-messaging-sw.js   Service Worker (offline cache + future FCM)
+       icons/icon-192.png         192×192 app icon
+       icons/icon-512.png         512×512 app icon
+
+     Path dependency: all /missionbudget01/ references below must match the
+     GitHub Pages repo name exactly. If the repo is renamed, update these six
+     lines and the paths in manifest.json and firebase-messaging-sw.js.
+     ═══════════════════════════════════════════════════════════════════════ -->
+<link rel="manifest" href="/missionbudget01/manifest.json">
+<meta name="theme-color" content="#15201C">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Budget">
+<link rel="apple-touch-icon" href="/missionbudget01/icons/icon-192.png">
+
+<!-- Firebase Compat SDK 9.23.0 — project: mcdonald-budget-01 — do not change version without template bump -->
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-messaging-compat.js"></script>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     SERVICE WORKER REGISTRATION (template v4)
+     ═══════════════════════════════════════════════════════════════════════
+     Registers firebase-messaging-sw.js for background FCM message handling
+     and offline shell caching. Must run before FCM token registration below.
+     Silent fail: if SW is unavailable (non-HTTPS, old browser) the rest of
+     the app continues normally — SW is enhancement only.
+     ═══════════════════════════════════════════════════════════════════════ -->
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('/missionbudget01/firebase-messaging-sw.js')
+      .then(function(reg) {
+        console.log('[SW] Registered — scope:', reg.scope);
+      })
+      .catch(function(err) {
+        console.log('[SW] Registration failed:', err);
+      });
+  });
+}
+</script>
+
+<style>
+/* ════════════════════════════════════════════
+   LOCKED CSS — do not edit during build session
+   Template v1 · Budget Bill Tracker
+   ════════════════════════════════════════════ */
+
+:root {
+  --ink:         #15201C;
+  --paper:       #F3F1EA;
+  --muted:       #8A8A82;
+  --border:      #D8D5CC;
+  --week-rule:   #B8B4A8;
+  --col-rule:    #D8D5CC;
+
+  --unpaid-bg:   #FFFDF8;
+  --paid-bg:     #EDF4EE;
+  --paid-ink:    #2A6030;
+  --paid-strike: #8BBD93;
+
+  --auto-bg:     #EEEDFE;  --auto-ink:    #3C3489;
+  --manual-bg:   #FEF3E0;  --manual-ink:  #7A4800;
+  --debt-bg:     #FDECEA;  --debt-ink:    #9B2020;
+  --util-bg:     #E0EFF5;  --util-ink:    #0C5A6E;
+  --biz-bg:      #EEEDFE;  --biz-ink:     #3C3489;
+  --ent-bg:      #E5F0FB;  --ent-ink:     #0C447C;
+  --med-bg:      #E0F4EC;  --med-ink:     #085041;
+  --other-bg:    #F0EEE8;  --other-ink:   #444441;
+  --late-bg:     #FFF0E0;  --late-ink:    #8B4000;
+
+  --synced-c:    #2A6030;
+  --syncing-c:   #7A6000;
+  --offline-c:   #9B2020;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Georgia', serif;
+  background: var(--paper);
+  color: var(--ink);
+  min-height: 100vh;
+  padding-bottom: 80px;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+
+/* ── Header ── */
+header {
+  position: sticky; top: 0; z-index: 20;
+  background: var(--paper);
+  border-bottom: 2px solid var(--ink);
+  padding: 16px 16px 10px;
+}
+.hdr-top {
+  display: flex; justify-content: space-between;
+  align-items: baseline; gap: 8px;
+}
+.hdr-title { font-size: 20px; font-weight: bold; letter-spacing: -0.3px; }
+
+.sync-badge {
+  display: flex; align-items: center; gap: 5px;
+  font-size: 10px; font-family: 'Courier New', monospace;
+  padding: 3px 8px; border-radius: 3px;
+  border: 1px solid var(--border); background: var(--paper); color: var(--muted);
+}
+.sync-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--muted); flex-shrink: 0; }
+.sync-badge[data-state="synced"]  .sync-dot { background: var(--synced-c); }
+.sync-badge[data-state="syncing"] .sync-dot { background: var(--syncing-c); }
+.sync-badge[data-state="offline"] .sync-dot { background: var(--offline-c); }
+.sync-badge[data-state="synced"]  #syncLabel { color: var(--synced-c); }
+.sync-badge[data-state="syncing"] #syncLabel { color: var(--syncing-c); }
+.sync-badge[data-state="offline"] #syncLabel { color: var(--offline-c); }
+
+.summary-bar { display: flex; gap: 20px; margin-top: 10px; flex-wrap: wrap; }
+.sum-item { font-size: 11px; color: var(--muted); line-height: 1.4; }
+.sum-item strong {
+  display: block; font-size: 15px; color: var(--ink);
+  font-family: 'Courier New', monospace; font-weight: bold;
+}
+
+/* ── Week sections ── */
+.week-section { border-bottom: 2px solid var(--week-rule); }
+.week-hdr {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 12px 16px 8px;
+  background: var(--paper); border-bottom: 1px solid var(--col-rule);
+}
+.week-label {
+  font-size: 12px; font-weight: bold;
+  font-family: 'Courier New', monospace; letter-spacing: 0.8px; text-transform: uppercase;
+}
+.week-dates { font-size: 11px; color: var(--muted); }
+.week-money { font-size: 11px; text-align: right; color: var(--muted); }
+.week-money strong { display: block; font-family: 'Courier New', monospace; color: var(--ink); font-size: 13px; }
+
+/* ── Columns ── */
+.cols { display: grid; grid-template-columns: 1fr 1fr; }
+.col { padding: 8px 10px 12px; min-height: 60px; }
+.col-unpaid { border-right: 1px solid var(--col-rule); }
+.col-hdr {
+  font-size: 9px; font-family: 'Courier New', monospace;
+  letter-spacing: 1.2px; color: var(--muted);
+  padding-bottom: 5px; margin-bottom: 5px;
+  border-bottom: 1px solid var(--col-rule);
+}
+.col-unpaid .col-hdr { color: #8A3A20; }
+.col-paid .col-hdr   { color: var(--paid-ink); }
+.col.drag-over { background: rgba(40,100,50,0.06); outline: 2px dashed var(--paid-ink); outline-offset: -2px; }
+.col-unpaid.drag-over { background: rgba(150,60,20,0.05); outline-color: #8A3A20; }
+
+/* ── Bill cards ── */
+.bill-card {
+  display: flex; justify-content: space-between; align-items: center;
+  gap: 6px; padding: 8px 9px; margin-bottom: 4px;
+  border-radius: 4px; border: 1px solid var(--border);
+  background: var(--unpaid-bg);
+  cursor: grab; touch-action: none; position: relative;
+  transition: box-shadow 0.1s;
+}
+.bill-card:active { cursor: grabbing; }
+.bill-card.paid { background: var(--paid-bg); border-color: #C0D9C4; }
+.bill-card.dragging { opacity: 0.35; }
+
+.card-left { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+.card-name { font-size: 12px; font-weight: bold; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.bill-card.paid .card-name { color: var(--paid-ink); text-decoration: line-through; text-decoration-color: var(--paid-strike); }
+.card-tags { display: flex; gap: 3px; flex-wrap: wrap; }
+.tag { font-size: 8px; padding: 1px 4px; border-radius: 2px; font-family: 'Courier New', monospace; white-space: nowrap; }
+.tag-auto     { background: var(--auto-bg);   color: var(--auto-ink); }
+.tag-manual   { background: var(--manual-bg); color: var(--manual-ink); }
+.tag-DEBT     { background: var(--debt-bg);   color: var(--debt-ink); }
+.tag-UTIL     { background: var(--util-bg);   color: var(--util-ink); }
+.tag-BUSINESS { background: var(--biz-bg);    color: var(--biz-ink); }
+.tag-ENT      { background: var(--ent-bg);    color: var(--ent-ink); }
+.tag-MED      { background: var(--med-bg);    color: var(--med-ink); }
+.tag-RANDOM   { background: var(--other-bg);  color: var(--other-ink); }
+.tag-late     { background: var(--late-bg);   color: var(--late-ink); }
+
+.card-right { display: flex; flex-direction: column; align-items: flex-end; gap: 3px; flex-shrink: 0; }
+.card-amount { font-size: 13px; font-family: 'Courier New', monospace; font-weight: bold; white-space: nowrap; }
+.bill-card.paid .card-amount { color: var(--paid-ink); }
+.card-empty { font-size: 11px; color: var(--muted); font-style: italic; padding: 6px 0 2px; }
+
+/* ── Touch ghost ── */
+.touch-drag-ghost {
+  position: fixed; display: none; pointer-events: none; z-index: 9999;
+  background: var(--paper); border: 2px solid var(--ink); border-radius: 4px;
+  padding: 7px 10px; font-family: 'Georgia', serif; font-size: 12px;
+  font-weight: bold; color: var(--ink); box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+  white-space: nowrap; transform: translate(-50%, -50%);
+  max-width: 200px; overflow: hidden; text-overflow: ellipsis;
+}
+
+/* ── Touch tap targets ── */
+@media (pointer: coarse) {
+  .bill-card { min-height: 52px; padding: 10px 9px; }
+  .card-name { font-size: 13px; }
+}
+
+@media (max-width: 420px) {
+  .col { padding: 6px 7px 10px; }
+  .card-amount { font-size: 12px; }
+  .card-name { font-size: 11px; }
+}
+
+/* ── User selector modal (template v4) ── */
+/* Shown on first launch only. Persists choice to localStorage.budgetUser.  */
+/* LOCKED after v4 — do not edit without template bump.                      */
+#userModal {
+  display: none;
+  position: fixed; inset: 0; z-index: 10000;
+  background: rgba(21,32,28,0.72);
+  align-items: center; justify-content: center;
+}
+#userModal.visible { display: flex; }
+.user-modal-box {
+  background: var(--paper);
+  border: 2px solid var(--ink);
+  border-radius: 6px;
+  padding: 28px 24px 24px;
+  width: 280px;
+  text-align: center;
+}
+.user-modal-title {
+  font-size: 15px; font-weight: bold;
+  letter-spacing: -0.2px; margin-bottom: 6px;
+}
+.user-modal-sub {
+  font-size: 11px; color: var(--muted);
+  margin-bottom: 20px; line-height: 1.5;
+}
+.user-btn-row { display: flex; gap: 10px; justify-content: center; }
+.user-btn {
+  flex: 1; padding: 12px 0;
+  border: 2px solid var(--ink); border-radius: 4px;
+  background: var(--paper); color: var(--ink);
+  font-family: 'Georgia', serif; font-size: 14px; font-weight: bold;
+  cursor: pointer; transition: background 0.12s;
+}
+.user-btn:active { background: var(--border); }
+</style>
+</head>
+<body>
+
+<div class="touch-drag-ghost" id="touchGhost"></div>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     USER SELECTOR MODAL (template v4)
+     ═══════════════════════════════════════════════════════════════════════
+     Shown on first launch (no localStorage.budgetUser set) and after
+     "Switch user" is triggered. Stores 'chris' or 'inez' to localStorage.
+     Choice persists across sessions on the same device — each phone only
+     needs to select once. JS logic is in the FCM IIFE below.
+     ═══════════════════════════════════════════════════════════════════════ -->
+<div id="userModal">
+  <div class="user-modal-box">
+    <div class="user-modal-title">Who's using this device?</div>
+    <div class="user-modal-sub">Your choice is saved to this phone.<br>You won't be asked again.</div>
+    <div class="user-btn-row">
+      <button class="user-btn" id="userBtnChris">Chris</button>
+      <button class="user-btn" id="userBtnInez">Inez</button>
+    </div>
+  </div>
+</div>
+
+<header>
+  <div class="hdr-top">
+    <!-- EDITABLE: update month/year text only -->
+    <div class="hdr-title">Bills — September 2026</div>
+    <span class="sync-badge" id="syncBadge" data-state="offline">
+      <span class="sync-dot"></span>
+      <span id="syncLabel">offline</span>
+    </span>
+  </div>
+  <div class="summary-bar">
+    <div class="sum-item">Total <strong id="sumTotal">—</strong></div>
+    <div class="sum-item">Paid <strong id="sumPaid">—</strong></div>
+    <div class="sum-item">Remaining <strong id="sumLeft">—</strong></div>
+    <div class="sum-item">Progress <strong id="sumCount">—</strong></div>
+  </div>
+</header>
+
+<div id="app"></div>
+
+<script>
+'use strict';
+
+// ════════════════════════════════════════════════════════════════════════════
+// INJECT BLOCK 1 — BILLS ARRAY
+// Replace everything between BEGIN and END markers when building a new month.
+// Do not touch anything outside this block.
+// Schema: { id, name, week, amount, paid, type, cat, late }
+// See spec §4.3 for field definitions.
+// ════════════════════════════════════════════════════════════════════════════
+// [BEGIN INJECT BILLS]
+var BILLS = [];
+// [END INJECT BILLS]
+
+// ════════════════════════════════════════════════════════════════════════════
+// INJECT BLOCK 2 — WEEKS METADATA
+// Replace for each new month. Only include weeks that have at least one bill.
+// Dates string format: 'Mon D – Mon D' using confirmed boundaries from Chris.
+// See spec §4.4.
+// ════════════════════════════════════════════════════════════════════════════
+// [BEGIN INJECT WEEKS]
+var WEEKS = [];
+// [END INJECT WEEKS]
+
+// ════════════════════════════════════════════════════════════════════════════
+// LOCKED MECHANICS — do not edit during a build session
+// Template v1 · Budget Bill Tracker
+// ════════════════════════════════════════════════════════════════════════════
+
+// ── Helpers ──
+function fmt(n) {
+  return '$' + n.toLocaleString('en-US', { minimumFractionDigits:2, maximumFractionDigits:2 });
+}
+function billById(id) {
+  return BILLS.find(function(b){ return b.id === id; });
+}
+
+// ── Render ──
+function draw() {
+  var app = document.getElementById('app');
+  var html = '';
+  WEEKS.forEach(function(wk) {
+    var wBills = BILLS.filter(function(b){ return b.week === wk.key; });
+    var unpaid = wBills.filter(function(b){ return !b.paid; });
+    var paid   = wBills.filter(function(b){ return  b.paid; });
+    var wTotal = wBills.reduce(function(s,b){ return s+b.amount; }, 0);
+    var wPaid  = paid.reduce(function(s,b){ return s+b.amount; }, 0);
+
+    html += '<div class="week-section">';
+    html += '<div class="week-hdr">';
+    html += '<div><div class="week-label">' + wk.label + '</div>';
+    html += '<div class="week-dates">' + wk.dates + '</div></div>';
+    html += '<div class="week-money">Due <strong>' + fmt(wTotal) + '</strong>Paid <strong>' + fmt(wPaid) + '</strong></div>';
+    html += '</div>';
+    html += '<div class="cols">';
+    html += '<div class="col col-unpaid" data-drop="unpaid" data-week="' + wk.key + '">';
+    html += '<div class="col-hdr">UNPAID</div>';
+    html += unpaid.length ? unpaid.map(cardHTML).join('') : '<div class="card-empty">All clear</div>';
+    html += '</div>';
+    html += '<div class="col col-paid" data-drop="paid" data-week="' + wk.key + '">';
+    html += '<div class="col-hdr">PAID</div>';
+    html += paid.length ? paid.map(cardHTML).join('') : '<div class="card-empty">Nothing yet</div>';
+    html += '</div>';
+    html += '</div></div>';
+  });
+  app.innerHTML = html;
+  updateSummary();
+  wire();
+}
+
+function cardHTML(b) {
+  var paidCls = b.paid ? ' paid' : '';
+  var lateTag = b.late ? '<span class="tag tag-late">carryover</span>' : '';
+  return '<div class="bill-card' + paidCls + '" draggable="true" data-id="' + b.id + '" data-week="' + b.week + '">'
+    + '<div class="card-left"><div class="card-name">' + b.name + '</div>'
+    + '<div class="card-tags">'
+    + '<span class="tag tag-' + (b.type === 'automated' ? 'auto' : 'manual') + '">' + (b.type === 'automated' ? 'auto' : 'manual') + '</span>'
+    + '<span class="tag tag-' + b.cat + '">' + b.cat + '</span>'
+    + lateTag + '</div></div>'
+    + '<div class="card-right"><div class="card-amount">' + fmt(b.amount) + '</div></div>'
+    + '</div>';
+}
+
+function updateSummary() {
+  var total   = BILLS.reduce(function(s,b){ return s+b.amount; }, 0);
+  var paidAmt = BILLS.filter(function(b){ return b.paid; }).reduce(function(s,b){ return s+b.amount; }, 0);
+  var paidCnt = BILLS.filter(function(b){ return b.paid; }).length;
+  document.getElementById('sumTotal').textContent = fmt(total);
+  document.getElementById('sumPaid').textContent  = fmt(paidAmt);
+  document.getElementById('sumLeft').textContent  = fmt(total - paidAmt);
+  document.getElementById('sumCount').textContent = paidCnt + ' / ' + BILLS.length;
+}
+
+// ── Drop logic (shared by desktop and touch bridge) ──
+// SYNC INVARIANT: Any change here MUST also be applied to _applyDrop() in the touch bridge.
+function applyDrop(billId, targetPaid, targetWeek) {
+  var bill = billById(billId);
+  if (!bill) return;
+  if (bill.week !== targetWeek) return;  // week-scoped — cross-week drop is no-op
+  if (bill.paid === targetPaid) return;  // same state — no-op
+  bill.paid = targetPaid;
+  draw();
+  if (typeof FB !== 'undefined') FB.scheduleWrite();
+}
+
+// ── Desktop HTML5 Drag & Drop ──
+function wire() {
+  document.querySelectorAll('.bill-card[draggable]').forEach(function(card) {
+    card.addEventListener('dragstart', function(e) {
+      e.dataTransfer.setData('text/plain', card.dataset.id);
+      e.dataTransfer.effectAllowed = 'move';
+      setTimeout(function(){ card.classList.add('dragging'); }, 0);
+    });
+    card.addEventListener('dragend', function() {
+      card.classList.remove('dragging');
+    });
+  });
+  document.querySelectorAll('.col[data-drop]').forEach(function(col) {
+    col.addEventListener('dragover', function(e) {
+      e.preventDefault(); e.dataTransfer.dropEffect = 'move';
+      col.classList.add('drag-over');
+    });
+    col.addEventListener('dragleave', function(e) {
+      if (!col.contains(e.relatedTarget)) col.classList.remove('drag-over');
+    });
+    col.addEventListener('drop', function(e) {
+      e.preventDefault(); col.classList.remove('drag-over');
+      var id    = e.dataTransfer.getData('text/plain');
+      var tPaid = col.dataset.drop === 'paid';
+      var tWeek = col.dataset.week;
+      applyDrop(id, tPaid, tWeek);
+    });
+  });
+}
+
+// ── FIREBASE SYNC MODULE ──────────────────────────────────────────────────────
+// LOCKED. Session path (SESSION_KEY) is the only value edited per month.
+// See spec §5 and Budget_Build_And_Workflow_Spec for full design notes.
+var FB = (function(){
+  // EDITABLE (location 6): update if Firebase project changes — see locked comment above
+  var _config = {
+    apiKey:            "AIzaSyBT_eGObW-c9tBTpLqPovvSoN-Ieo-jGe8",
+    authDomain:        "mcdonald-budget-01.firebaseapp.com",
+    projectId:         "mcdonald-budget-01",
+    storageBucket:     "mcdonald-budget-01.firebasestorage.app",
+    messagingSenderId: "472291576800",
+    appId:             "1:472291576800:web:722f5e004b5e2ef5b83985",
+    databaseURL:       "https://mcdonald-budget-01-default-rtdb.firebaseio.com"
+  };
+
+  // EDITABLE PER MONTH: update to budget/bills/{month_key}
+  var SESSION_KEY = 'budget/bills/sept_2026'; // EDITABLE: update to budget/bills/{month_key}
+
+  var _db = null, _sessionRef = null, _writeTimer = null;
+  var _lastSavedAt = null, _initialized = false, _listenerOn = false;
+
+  function _setStatus(state, label) {
+    var badge = document.getElementById('syncBadge');
+    var lbl   = document.getElementById('syncLabel');
+    if (badge) badge.setAttribute('data-state', state);
+    if (lbl)   lbl.textContent = label || state;
+  }
+
+  function _buildPayload() {
+    var changes = {};
+    BILLS.forEach(function(b){ changes[b.id] = b.paid; });
+    return { changes: changes, savedAt: new Date().toISOString() };
+  }
+
+  function _applyPayload(data) {
+    if (!data || !data.changes) return;
+    var changed = false;
+    BILLS.forEach(function(b){
+      if (b.id in data.changes && b.paid !== data.changes[b.id]) {
+        b.paid = data.changes[b.id]; changed = true;
+      }
+    });
+    if (changed) draw();
+  }
+
+  function _doWrite() {
+    if (!_sessionRef) return;
+    _setStatus('syncing', 'syncing...');
+    var payload = _buildPayload();
+    _lastSavedAt = payload.savedAt;
+    _sessionRef.set(payload)
+      .then(function()  { _setStatus('synced', 'synced'); })
+      .catch(function() { _setStatus('offline', 'offline'); });
+  }
+
+  function scheduleWrite() {
+    if (!_initialized) return;
+    clearTimeout(_writeTimer);
+    _writeTimer = setTimeout(_doWrite, 300);
+  }
+
+  function init() {
+    try {
+      if (typeof firebase === 'undefined' || !firebase.app) { _setStatus('offline', 'offline'); return; }
+      var app = firebase.apps.length ? firebase.app() : firebase.initializeApp(_config);
+      _db = firebase.database(app);
+      _sessionRef = _db.ref(SESSION_KEY);
+      _initialized = true;
+      _setStatus('syncing', 'loading...');
+      _sessionRef.once('value')
+        .then(function(snap) {
+          var data = snap.val();
+          if (data && data.savedAt) { _lastSavedAt = data.savedAt; _applyPayload(data); }
+          _setStatus('synced', 'synced');
+          if (!_listenerOn) {
+            _listenerOn = true;
+            _sessionRef.on('value', function(snap2) {
+              var remote = snap2.val();
+              if (!remote || !remote.savedAt) return;
+              if (_lastSavedAt && remote.savedAt <= _lastSavedAt) return;
+              _lastSavedAt = remote.savedAt;
+              _setStatus('syncing', 'syncing...');
+              _applyPayload(remote);
+              _setStatus('synced', 'synced');
+            });
+          }
+        })
+        .catch(function() { _setStatus('offline', 'offline'); });
+    } catch(e) { _setStatus('offline', 'offline'); }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    setTimeout(init, 100);
+  }
+
+  return { scheduleWrite: scheduleWrite };
+})();
+// ── END FIREBASE SYNC MODULE ──────────────────────────────────────────────────
+
+// ── USER SELECTOR + FCM TOKEN REGISTRATION ────────────────────────────────────
+// LOCKED after template v4. Do not edit without template bump.
+//
+// Flow:
+//   1. On load, check localStorage.budgetUser ('chris' | 'inez').
+//   2. If not set, show user selector modal. User taps name → stored → continue.
+//   3. Request notification permission (prompt shown once by browser).
+//   4. Call getToken() with VAPID public key → write token to Firebase at:
+//        users/{budgetUser}/fcmTokens/budget  →  { token, updated }
+//   5. Silent fail throughout — if any step fails, app continues normally.
+//
+// Token path: users/{chris|inez}/fcmTokens/budget
+// VAPID public key: BITDVXdf1nWavtpCJbttjvVUUsuOxyPFirMBYqtw2RzJVbnVTSZKNfTGk64pphhNdsvrDqwH1gPDfedPsh2vLyU
+// Cloud Functions read this path to send push notifications.
+(function() {
+  var VAPID_KEY = 'BITDVXdf1nWavtpCJbttjvVUUsuOxyPFirMBYqtw2RzJVbnVTSZKNfTGk64pphhNdsvrDqwH1gPDfedPsh2vLyU';
+  var LS_KEY    = 'budgetUser';
+
+  function registerToken(budgetUser) {
+    try {
+      if (typeof firebase === 'undefined' || !firebase.messaging) {
+        console.log('[FCM] Messaging SDK not available — skipping token registration.');
+        return;
+      }
+      var messaging = firebase.messaging();
+      Notification.requestPermission().then(function(permission) {
+        if (permission !== 'granted') {
+          console.log('[FCM] Notification permission denied — skipping token registration.');
+          return;
+        }
+        messaging.getToken({ vapidKey: VAPID_KEY }).then(function(token) {
+          if (!token) {
+            console.log('[FCM] No token returned — SW may not be ready yet.');
+            return;
+          }
+          var app      = firebase.apps.length ? firebase.app() : null;
+          if (!app) { console.log('[FCM] No Firebase app — skipping token write.'); return; }
+          var db       = firebase.database(app);
+          var tokenRef = db.ref('users/' + budgetUser + '/fcmTokens/budget');
+          tokenRef.set({ token: token, updated: new Date().toISOString() })
+            .then(function() {
+              console.log('[FCM] Token written for user:', budgetUser);
+            })
+            .catch(function(err) {
+              console.log('[FCM] Token write failed:', err);
+            });
+        }).catch(function(err) {
+          console.log('[FCM] getToken failed:', err);
+        });
+      }).catch(function(err) {
+        console.log('[FCM] requestPermission failed:', err);
+      });
+    } catch(e) {
+      console.log('[FCM] Unexpected error in token registration:', e);
+    }
+  }
+
+  function initUserAndFCM() {
+    var stored = localStorage.getItem(LS_KEY);
+    if (stored === 'chris' || stored === 'inez') {
+      // Already selected — go straight to token registration
+      registerToken(stored);
+      return;
+    }
+    // Show selector modal
+    var modal       = document.getElementById('userModal');
+    var btnChris    = document.getElementById('userBtnChris');
+    var btnInez     = document.getElementById('userBtnInez');
+    if (!modal || !btnChris || !btnInez) return;
+    modal.classList.add('visible');
+
+    function selectUser(name) {
+      localStorage.setItem(LS_KEY, name);
+      modal.classList.remove('visible');
+      registerToken(name);
+    }
+    btnChris.addEventListener('click', function() { selectUser('chris'); });
+    btnInez.addEventListener('click',  function() { selectUser('inez');  });
+  }
+
+  // Run after DOM and Firebase are ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initUserAndFCM);
+  } else {
+    setTimeout(initUserAndFCM, 200);
+  }
+})();
+// ── END USER SELECTOR + FCM TOKEN REGISTRATION ───────────────────────────────
+
+// ── TOUCH-TO-DRAG BRIDGE ──────────────────────────────────────────────────────
+// LOCKED. Do not edit. Mirrors dashboard_template_v8/v12 pattern exactly.
+// SYNC INVARIANT (permanent): _applyDrop() below must mirror applyDrop() above.
+// Any change to applyDrop() MUST also be applied here. See spec §6.2 and §16.4.
+(function(){
+  var ghost = document.getElementById('touchGhost');
+  var dragging = null, startX = 0, startY = 0, moved = false;
+  var MOVE_THRESHOLD = 6;
+
+  function _applyDrop(el) {
+    // SYNC INVARIANT — mirror of applyDrop() above
+    if (!dragging || !el) return;
+    var col = el.closest ? el.closest('.col[data-drop]') : null;
+    if (!col) return;
+    var tPaid = col.dataset.drop === 'paid';
+    var tWeek = col.dataset.week;
+    applyDrop(dragging.billId, tPaid, tWeek);
+  }
+
+  function _cleanup() {
+    if (dragging) {
+      var src = document.querySelector('.bill-card[data-id="' + dragging.billId + '"]');
+      if (src) src.classList.remove('dragging');
+    }
+    dragging = null; moved = false;
+    ghost.style.display = 'none';
+    document.querySelectorAll('.col.drag-over').forEach(function(c){ c.classList.remove('drag-over'); });
+  }
+
+  document.addEventListener('touchstart', function(e) {
+    var touch = e.touches[0];
+    if (touch.target.closest('button, input, select, textarea')) return;
+    var card = touch.target.closest('.bill-card[data-id]');
+    if (!card) return;
+    startX = touch.clientX; startY = touch.clientY; moved = false;
+    dragging = { billId: card.dataset.id, week: card.dataset.week };
+  }, { passive: true });
+
+  document.addEventListener('touchmove', function(e) {
+    if (!dragging) return;
+    var touch = e.touches[0];
+    var dx = touch.clientX - startX, dy = touch.clientY - startY;
+    if (!moved && Math.sqrt(dx*dx + dy*dy) > MOVE_THRESHOLD) {
+      moved = true;
+      var src = document.querySelector('.bill-card[data-id="' + dragging.billId + '"]');
+      if (src) src.classList.add('dragging');
+      var bill = billById(dragging.billId);
+      if (bill) {
+        ghost.textContent = bill.name + ' ' + fmt(bill.amount);
+        ghost.style.display = 'block';
+      }
+    }
+    if (moved) {
+      ghost.style.left = touch.clientX + 'px'; ghost.style.top = touch.clientY + 'px';
+      ghost.style.display = 'none';
+      var el = document.elementFromPoint(touch.clientX, touch.clientY);
+      ghost.style.display = 'block';
+      document.querySelectorAll('.col.drag-over').forEach(function(c){ c.classList.remove('drag-over'); });
+      if (el) { var col = el.closest ? el.closest('.col[data-drop]') : null; if (col) col.classList.add('drag-over'); }
+    }
+  }, { passive: true });
+
+  document.addEventListener('touchend', function(e) {
+    if (!dragging) return;
+    if (moved) {
+      var touch = e.changedTouches[0];
+      ghost.style.display = 'none';
+      var el = document.elementFromPoint(touch.clientX, touch.clientY);
+      ghost.style.display = 'block';
+      _applyDrop(el);
+      if (typeof FB !== 'undefined') FB.scheduleWrite();
+    }
+    _cleanup();
+  }, { passive: true });
+
+  document.addEventListener('touchcancel', function(){ _cleanup(); }, { passive: true });
+})();
+// ── END TOUCH-TO-DRAG BRIDGE ──────────────────────────────────────────────────
+
+// Initial render
+draw();
+</script>
+</body>
+</html>
