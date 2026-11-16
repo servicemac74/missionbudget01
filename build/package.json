@@ -1,0 +1,8 @@
+{
+  "name": "budget-tracker-build",
+  "private": true,
+  "description": "Node build pipeline for the budget bill tracker index.html, ported from Budget_Build_Script_Nov2026_v2.py (no Python runtime needed). See BUILD_AND_DEPLOY.md.",
+  "dependencies": {
+    "xlsx": "^0.18.5"
+  }
+}
