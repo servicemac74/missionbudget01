@@ -88,6 +88,27 @@ deploy step. Push access is via Git Credential Manager (system-level
 works the same for any tool that shells out to `git`, nothing tool-specific
 to configure.
 
+**Archive the source handoff file - locally only, never into this repo.**
+Added 2026-11-16, corrected same day (Phase 1 of
+`_budget_ingest_analysis/AUTOMATION_ROADMAP.md`). Copy every
+`HANDOFF_COPY_...xlsx` that's actually been used to build a deployed
+`index.html` into `_budget_ingest_analysis/archive/` (a plain file copy,
+not a git commit). **Do not** put a copy in this repo's `build/archive/`
+or commit one anywhere in `missionbudget01` - this repo is public
+(`servicemac74/missionbudget01`, confirmed on github.com), and the raw
+workbook carries far more detail than the dashboard already shows
+publicly (every account's full balance history across every pull, every
+transaction's raw un-categorized bank description, not just the
+summarized/categorized bills `index.html` injects). A first attempt to
+commit v25/v26's workbooks into `build/archive/` on 2026-11-16 was caught
+and reverted before anything was pushed - `build/archive/` is now
+gitignored as a safety net, but the real rule is simpler: these files
+never belong in this repo's working tree at all. **Flagged, not fully
+resolved:** a private archive location (a second private repo, or private
+cloud storage) would restore the "tied to the exact dashboard commit, off-
+machine backup" benefit without the public-exposure problem - not set up
+yet, revisit if Chris wants that later.
+
 ## Standing feature: home-screen PWA update-check banner
 
 Added 2026-11-16, ported from `ignite-trip-app`'s `index.html` (built

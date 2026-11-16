@@ -47,6 +47,12 @@ build/Release
 # Dependency directories
 node_modules/
 
+# Handoff workbook archive (raw bank data) - local-only, never this public
+# repo. See build/BUILD_AND_DEPLOY.md's "Archive" note. This rule is the
+# safety net, not the policy - the policy is "don't put these files in this
+# folder at all," this just stops an accidental `git add -A` from undoing that.
+build/archive/
+
 # Optional npm cache directory
 .npm
 
