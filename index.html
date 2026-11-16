@@ -1302,6 +1302,13 @@ header {
 .tag-staged { background: #FFF3C4; color: #6B5200; border: 1px dashed #C9A52B; }
 .bill-card.staged { border-style: dashed; background: #FFFBEA; cursor: default; }
 .wk-staged-sum { font-size: 10px; font-family: 'Courier New', monospace; color: #6B5200; }
+
+.update-banner{
+  position:fixed; left:12px; right:12px; bottom:12px; z-index:500;
+  background:var(--manual-bg); color:var(--manual-ink); border:1px solid #C9A52B; border-radius:10px;
+  padding:12px 16px; font-size:14px; font-weight:600; text-align:center; cursor:pointer;
+  box-shadow:0 2px 8px rgba(0,0,0,0.15);
+}
 </style>
 </head>
 <body>
@@ -1651,7 +1658,7 @@ var STG = (function() {
 var BILLS = [
   {
     "id": "auto_gas_wk2",
-    "uid": "r170",
+    "uid": "r184",
     "name": "Gas — Wk2",
     "sub": "auto_gas_wk2",
     "week": "Wk2",
@@ -1669,7 +1676,7 @@ var BILLS = [
   },
   {
     "id": "auto_gas_wk3",
-    "uid": "r171",
+    "uid": "r185",
     "name": "Gas — Wk3",
     "sub": "auto_gas_wk3",
     "week": "Wk3",
@@ -1687,7 +1694,7 @@ var BILLS = [
   },
   {
     "id": "auto_gas_wk4",
-    "uid": "r172",
+    "uid": "r186",
     "name": "Gas — Wk4",
     "sub": "auto_gas_wk4",
     "week": "Wk4",
@@ -1705,7 +1712,7 @@ var BILLS = [
   },
   {
     "id": "auto_maintenance",
-    "uid": "r173",
+    "uid": "r187",
     "name": "auto_maintenance",
     "sub": "auto_maintenance",
     "week": "Wk5",
@@ -1723,7 +1730,7 @@ var BILLS = [
   },
   {
     "id": "auto_maintenance_02",
-    "uid": "r174",
+    "uid": "r188",
     "name": "auto_maintenance",
     "sub": "auto_maintenance",
     "week": "Wk5",
@@ -1741,7 +1748,7 @@ var BILLS = [
   },
   {
     "id": "business_hamly_higgsfield",
-    "uid": "r175",
+    "uid": "r189",
     "name": "business_hamly_higgsfield",
     "sub": "business_hamly_higgsfield",
     "week": "Wk1",
@@ -1759,7 +1766,7 @@ var BILLS = [
   },
   {
     "id": "business_hamly_godaddy",
-    "uid": "r176",
+    "uid": "r190",
     "name": "business_hamly_godaddy",
     "sub": "business_hamly_godaddy",
     "week": "Wk1",
@@ -1777,7 +1784,7 @@ var BILLS = [
   },
   {
     "id": "business_hamly_linode",
-    "uid": "r177",
+    "uid": "r191",
     "name": "business_hamly_linode",
     "sub": "business_hamly_linode",
     "week": "Wk1",
@@ -1813,7 +1820,7 @@ var BILLS = [
   },
   {
     "id": "business_hamly_anthropic",
-    "uid": "r179",
+    "uid": "r193",
     "name": "business_hamly_anthropic",
     "sub": "business_hamly_anthropic",
     "week": "Wk1",
@@ -1831,7 +1838,7 @@ var BILLS = [
   },
   {
     "id": "business_hamly_suno",
-    "uid": "r180",
+    "uid": "r194",
     "name": "business_hamly_suno",
     "sub": "business_hamly_suno",
     "week": "Wk2",
@@ -1849,7 +1856,7 @@ var BILLS = [
   },
   {
     "id": "business_hamly_lalal",
-    "uid": "r181",
+    "uid": "r195",
     "name": "business_hamly_lalal",
     "sub": "business_hamly_lalal",
     "week": "Wk2",
@@ -1867,7 +1874,7 @@ var BILLS = [
   },
   {
     "id": "business_hamly_vendors_other",
-    "uid": "r182",
+    "uid": "r196",
     "name": "business_hamly_vendors_other",
     "sub": "business_hamly_vendors_other",
     "week": "Wk3",
@@ -1885,7 +1892,7 @@ var BILLS = [
   },
   {
     "id": "business_hamly_vendors_other_02",
-    "uid": "r183",
+    "uid": "r197",
     "name": "business_hamly_vendors_other",
     "sub": "business_hamly_vendors_other",
     "week": "Wk3",
@@ -1903,7 +1910,7 @@ var BILLS = [
   },
   {
     "id": "business_realestate_supra",
-    "uid": "r184",
+    "uid": "r198",
     "name": "Supra (RE)",
     "sub": "business_realestate_supra",
     "week": "Wk1",
@@ -1921,13 +1928,13 @@ var BILLS = [
   },
   {
     "id": "credit_payment_credit_cards_chase_amazon",
-    "uid": "r185",
+    "uid": "r199",
     "name": "Chase Amazon Card",
     "sub": "credit_payment_credit cards_chase_amazon",
     "week": "Wk3",
     "logistics": "HOME EXPENSES",
     "priority": "01_PRIORITY_DUEDATE",
-    "date": "2026-11-18",
+    "date": "2026-11-16",
     "amount": 100,
     "paid": false,
     "tier": "firm",
@@ -1939,13 +1946,13 @@ var BILLS = [
   },
   {
     "id": "debt_payment_lge_autoloan_2024chryslerpacifica",
-    "uid": "r186",
+    "uid": "r200",
     "name": "Pacifica Loan",
     "sub": "debt_payment_lge_autoloan_2024chryslerpacifica",
     "week": "Wk3",
     "logistics": "HOME EXPENSES",
     "priority": "01_PRIORITY_DUEDATE",
-    "date": "2026-11-13",
+    "date": "2026-11-16",
     "amount": 720,
     "paid": false,
     "tier": "firm",
@@ -1957,7 +1964,7 @@ var BILLS = [
   },
   {
     "id": "debt_payment_synchrony_auto_chris",
-    "uid": "r187",
+    "uid": "r201",
     "name": "Synchrony — Chris",
     "sub": "debt_payment_synchrony_auto_chris",
     "week": "Wk4",
@@ -1975,7 +1982,7 @@ var BILLS = [
   },
   {
     "id": "debt_payment_synchrony_auto_inez",
-    "uid": "r188",
+    "uid": "r202",
     "name": "Synchrony — Inez",
     "sub": "debt_payment_synchrony_auto_inez",
     "week": "Wk3",
@@ -1993,7 +2000,7 @@ var BILLS = [
   },
   {
     "id": "entertainment_holiday",
-    "uid": "r189",
+    "uid": "r203",
     "name": "Holiday",
     "sub": "entertainment_holiday",
     "week": "Wk4",
@@ -2011,7 +2018,7 @@ var BILLS = [
   },
   {
     "id": "entertainment_netflix",
-    "uid": "r190",
+    "uid": "r204",
     "name": "Netflix",
     "sub": "entertainment_netflix",
     "week": "Wk2",
@@ -2029,7 +2036,7 @@ var BILLS = [
   },
   {
     "id": "entertainment_phoneapppurchases_02",
-    "uid": "r192",
+    "uid": "r206",
     "name": "App Subscriptions",
     "sub": "entertainment_phoneapppurchases",
     "week": "Wk4",
@@ -2047,7 +2054,7 @@ var BILLS = [
   },
   {
     "id": "entertainment_plexpass",
-    "uid": "r193",
+    "uid": "r207",
     "name": "Plex Pass",
     "sub": "entertainment_plexpass",
     "week": "Wk3",
@@ -2065,7 +2072,7 @@ var BILLS = [
   },
   {
     "id": "food_groceries_wk4",
-    "uid": "r194",
+    "uid": "r208",
     "name": "Groceries — Wk4",
     "sub": "food_groceries_wk4",
     "week": "Wk4",
@@ -2083,7 +2090,7 @@ var BILLS = [
   },
   {
     "id": "giving_tithes",
-    "uid": "r195",
+    "uid": "r209",
     "name": "Tithes",
     "sub": "giving_tithes",
     "week": "Wk4",
@@ -2101,7 +2108,7 @@ var BILLS = [
   },
   {
     "id": "home_maintenance",
-    "uid": "r196",
+    "uid": "r210",
     "name": "home_maintenance",
     "sub": "home_maintenance",
     "week": "Wk5",
@@ -2119,7 +2126,7 @@ var BILLS = [
   },
   {
     "id": "income_inez_morning_care",
-    "uid": "r197",
+    "uid": "r211",
     "name": "Inez Morning Care",
     "sub": "income_inez morning care",
     "week": "Wk1",
@@ -2137,7 +2144,7 @@ var BILLS = [
   },
   {
     "id": "income_inez_morning_care_02",
-    "uid": "r198",
+    "uid": "r212",
     "name": "Inez Morning Care",
     "sub": "income_inez morning care",
     "week": "Wk3",
@@ -2155,7 +2162,7 @@ var BILLS = [
   },
   {
     "id": "income_onepath",
-    "uid": "r199",
+    "uid": "r213",
     "name": "OnePath Payroll",
     "sub": "income_onepath",
     "week": "Wk2",
@@ -2173,7 +2180,7 @@ var BILLS = [
   },
   {
     "id": "income_onepath_02",
-    "uid": "r200",
+    "uid": "r214",
     "name": "OnePath Payroll",
     "sub": "income_onepath",
     "week": "Wk4",
@@ -2191,7 +2198,7 @@ var BILLS = [
   },
   {
     "id": "income_realestate_closing",
-    "uid": "r201",
+    "uid": "r215",
     "name": "RE Closing",
     "sub": "income_realestate_closing",
     "week": "Wk2",
@@ -2209,7 +2216,7 @@ var BILLS = [
   },
   {
     "id": "income_realestate_closing_02",
-    "uid": "r202",
+    "uid": "r216",
     "name": "RE Closing",
     "sub": "income_realestate_closing",
     "week": "Wk5",
@@ -2227,7 +2234,7 @@ var BILLS = [
   },
   {
     "id": "income_realestate_closing_03",
-    "uid": "r203",
+    "uid": "r217",
     "name": "RE Closing",
     "sub": "income_realestate_closing",
     "week": "Wk1",
@@ -2245,7 +2252,7 @@ var BILLS = [
   },
   {
     "id": "kids_allowance_isaiah",
-    "uid": "r204",
+    "uid": "r218",
     "name": "kids_allowance_isaiah",
     "sub": "kids_allowance_isaiah",
     "week": "Wk5",
@@ -2263,7 +2270,7 @@ var BILLS = [
   },
   {
     "id": "kids_allowance_lilyana",
-    "uid": "r205",
+    "uid": "r219",
     "name": "kids_allowance_lilyana",
     "sub": "kids_allowance_lilyana",
     "week": "Wk5",
@@ -2281,7 +2288,7 @@ var BILLS = [
   },
   {
     "id": "kids_school_purchases",
-    "uid": "r206",
+    "uid": "r220",
     "name": "School Purchases",
     "sub": "kids_school_purchases",
     "week": "Wk5",
@@ -2299,7 +2306,7 @@ var BILLS = [
   },
   {
     "id": "kids_school_purchases_wk4",
-    "uid": "r207",
+    "uid": "r221",
     "name": "kids_school_purchases_wk4",
     "sub": "kids_school_purchases_wk4",
     "week": "Wk4",
@@ -2317,7 +2324,7 @@ var BILLS = [
   },
   {
     "id": "med_doctor_visits",
-    "uid": "r208",
+    "uid": "r222",
     "name": "med_doctor visits",
     "sub": "med_doctor visits",
     "week": "Wk5",
@@ -2335,7 +2342,7 @@ var BILLS = [
   },
   {
     "id": "med_ymca",
-    "uid": "r209",
+    "uid": "r223",
     "name": "YMCA",
     "sub": "med_YMCA",
     "week": "Wk3",
@@ -2353,7 +2360,7 @@ var BILLS = [
   },
   {
     "id": "random_fee_monthly_maintenance_fee",
-    "uid": "r210",
+    "uid": "r224",
     "name": "Bank Maint. Fee",
     "sub": "random_fee_monthly_maintenance_fee",
     "week": "Wk4",
@@ -2371,7 +2378,7 @@ var BILLS = [
   },
   {
     "id": "util_country_fi_autoinsurance",
-    "uid": "r211",
+    "uid": "r225",
     "name": "Auto Insurance",
     "sub": "util_country-fi_autoinsurance",
     "week": "Wk4",
@@ -2395,7 +2402,7 @@ var BILLS = [
     "week": "Wk3",
     "logistics": "HOME EXPENSES",
     "priority": "01_PRIORITY_DUEDATE",
-    "date": "2026-11-10",
+    "date": "2026-11-16",
     "amount": 247.28,
     "paid": false,
     "tier": "firm",
@@ -2407,7 +2414,7 @@ var BILLS = [
   },
   {
     "id": "util_gas",
-    "uid": "r213",
+    "uid": "r227",
     "name": "Gas Utility",
     "sub": "util_gas",
     "week": "Wk3",
@@ -2425,13 +2432,13 @@ var BILLS = [
   },
   {
     "id": "util_phone",
-    "uid": "r214",
+    "uid": "r228",
     "name": "Phone",
     "sub": "util_phone",
     "week": "Wk3",
     "logistics": "HOME EXPENSES",
     "priority": "01_PRIORITY_DUEDATE",
-    "date": "2026-11-07",
+    "date": "2026-11-16",
     "amount": 105.96,
     "paid": false,
     "tier": "firm",
@@ -2443,7 +2450,7 @@ var BILLS = [
   },
   {
     "id": "util_lifeinsurance_chris",
-    "uid": "r215",
+    "uid": "r229",
     "name": "Chris Life Insurance",
     "sub": "util_lifeinsurance_chris",
     "week": "Wk3",
@@ -2461,7 +2468,7 @@ var BILLS = [
   },
   {
     "id": "util_lifeinsurance_inez",
-    "uid": "r216",
+    "uid": "r230",
     "name": "Inez Life Insurance",
     "sub": "util_lifeinsurance_inez",
     "week": "Wk3",
@@ -2479,7 +2486,7 @@ var BILLS = [
   },
   {
     "id": "util_power_grandview",
-    "uid": "r217",
+    "uid": "r231",
     "name": "Power — Grandview",
     "sub": "util_power_Grandview",
     "week": "Wk4",
@@ -2497,7 +2504,7 @@ var BILLS = [
   },
   {
     "id": "util_softwareexpenses_office365",
-    "uid": "r218",
+    "uid": "r232",
     "name": "Office 365",
     "sub": "util_softwareexpenses_office365",
     "week": "Wk4",
@@ -2515,7 +2522,7 @@ var BILLS = [
   },
   {
     "id": "util_softwareexpenses_office365_02",
-    "uid": "r219",
+    "uid": "r233",
     "name": "Office 365",
     "sub": "util_softwareexpenses_office365",
     "week": "Wk1",
@@ -2533,7 +2540,7 @@ var BILLS = [
   },
   {
     "id": "util_water",
-    "uid": "r220",
+    "uid": "r234",
     "name": "Water",
     "sub": "util_water",
     "week": "Wk3",
@@ -2551,7 +2558,7 @@ var BILLS = [
   },
   {
     "id": "util_zander",
-    "uid": "r221",
+    "uid": "r235",
     "name": "Zander Insurance",
     "sub": "util_zander",
     "week": "Wk2",
@@ -2569,7 +2576,7 @@ var BILLS = [
   },
   {
     "id": "util_power_grandview_late",
-    "uid": "r222",
+    "uid": "r236",
     "name": "Power — Grandview (carry)",
     "sub": "util_power_Grandview_late",
     "week": "Wk1",
@@ -2641,7 +2648,7 @@ var BILLS = [
   },
   {
     "id": "auto_gas_wk1",
-    "uid": "r226",
+    "uid": "r240",
     "name": "Gas — Wk1",
     "sub": "auto_gas_wk1",
     "week": "Wk1",
@@ -2659,7 +2666,7 @@ var BILLS = [
   },
   {
     "id": "food_groceries_wk1",
-    "uid": "r227",
+    "uid": "r241",
     "name": "Groceries — Wk1",
     "sub": "food_groceries_wk1",
     "week": "Wk1",
@@ -2677,7 +2684,7 @@ var BILLS = [
   },
   {
     "id": "kids_school_purchases_wk1",
-    "uid": "r228",
+    "uid": "r242",
     "name": "kids_school_purchases_wk1",
     "sub": "kids_school_purchases_wk1",
     "week": "Wk1",
@@ -2695,7 +2702,7 @@ var BILLS = [
   },
   {
     "id": "food_groceries_wk2",
-    "uid": "r229",
+    "uid": "r243",
     "name": "Groceries — Wk2",
     "sub": "food_groceries_wk2",
     "week": "Wk2",
@@ -2713,7 +2720,7 @@ var BILLS = [
   },
   {
     "id": "food_groceries_wk3",
-    "uid": "r230",
+    "uid": "r244",
     "name": "Groceries — Wk3",
     "sub": "food_groceries_wk3",
     "week": "Wk3",
@@ -2731,7 +2738,7 @@ var BILLS = [
   },
   {
     "id": "entertainment_holiday_02",
-    "uid": "r231",
+    "uid": "r245",
     "name": "Holiday",
     "sub": "entertainment_holiday",
     "week": "Wk1",
@@ -2749,7 +2756,7 @@ var BILLS = [
   },
   {
     "id": "auto_gas_wk2_02",
-    "uid": "r232",
+    "uid": "r246",
     "name": "Gas — Wk2",
     "sub": "auto_gas_wk2",
     "week": "Wk2",
@@ -2767,7 +2774,7 @@ var BILLS = [
   },
   {
     "id": "auto_gas_wk3_02",
-    "uid": "r233",
+    "uid": "r247",
     "name": "Gas — Wk3",
     "sub": "auto_gas_wk3",
     "week": "Wk3",
@@ -2785,7 +2792,7 @@ var BILLS = [
   },
   {
     "id": "entertainment_phoneapppurchases",
-    "uid": "r234",
+    "uid": "r248",
     "name": "App Subscriptions",
     "sub": "entertainment_phoneapppurchases",
     "week": "Wk3",
@@ -2803,7 +2810,7 @@ var BILLS = [
   },
   {
     "id": "kids_school_purchases_wk2",
-    "uid": "r235",
+    "uid": "r249",
     "name": "kids_school_purchases_wk2",
     "sub": "kids_school_purchases_wk2",
     "week": "Wk2",
@@ -2821,7 +2828,7 @@ var BILLS = [
   },
   {
     "id": "kids_school_purchases_wk3",
-    "uid": "r236",
+    "uid": "r250",
     "name": "kids_school_purchases_wk3",
     "sub": "kids_school_purchases_wk3",
     "week": "Wk3",
@@ -2839,7 +2846,7 @@ var BILLS = [
   },
   {
     "id": "business_hamly_anthropic_02",
-    "uid": "r237",
+    "uid": "r251",
     "name": "business_hamly_anthropic",
     "sub": "business_hamly_anthropic",
     "week": "Wk2",
@@ -2857,7 +2864,7 @@ var BILLS = [
   },
   {
     "id": "business_hamly_anthropic_03",
-    "uid": "r238",
+    "uid": "r252",
     "name": "business_hamly_anthropic",
     "sub": "business_hamly_anthropic",
     "week": "Wk2",
@@ -2875,7 +2882,7 @@ var BILLS = [
   },
   {
     "id": "business_hamly_anthropic_04",
-    "uid": "r239",
+    "uid": "r253",
     "name": "business_hamly_anthropic",
     "sub": "business_hamly_anthropic",
     "week": "Wk3",
@@ -2893,7 +2900,7 @@ var BILLS = [
   },
   {
     "id": "income_onepath_03",
-    "uid": "r240",
+    "uid": "r254",
     "name": "OnePath Payroll",
     "sub": "income_onepath",
     "week": "Wk2",
@@ -2911,7 +2918,7 @@ var BILLS = [
   },
   {
     "id": "income_realestate_closing_04",
-    "uid": "r241",
+    "uid": "r255",
     "name": "RE Closing",
     "sub": "income_realestate_closing",
     "week": "Wk1",
@@ -2929,7 +2936,7 @@ var BILLS = [
   },
   {
     "id": "income_inez_morning_care_03",
-    "uid": "r242",
+    "uid": "r256",
     "name": "Inez Morning Care",
     "sub": "income_inez morning care",
     "week": "Wk2",
@@ -2947,7 +2954,7 @@ var BILLS = [
   },
   {
     "id": "income_inez_morning_care_04",
-    "uid": "r243",
+    "uid": "r257",
     "name": "Inez Morning Care",
     "sub": "income_inez morning care",
     "week": "Wk2",
@@ -2965,7 +2972,7 @@ var BILLS = [
   },
   {
     "id": "entertainment_holiday_03",
-    "uid": "r244",
+    "uid": "r258",
     "name": "Holiday",
     "sub": "entertainment_holiday",
     "week": "Wk1",
@@ -2983,7 +2990,7 @@ var BILLS = [
   },
   {
     "id": "random_amazon",
-    "uid": "r245",
+    "uid": "r259",
     "name": "random_amazon",
     "sub": "random_amazon",
     "week": "Wk1",
@@ -3001,7 +3008,7 @@ var BILLS = [
   },
   {
     "id": "random_amazon_02",
-    "uid": "r246",
+    "uid": "r260",
     "name": "random_amazon",
     "sub": "random_amazon",
     "week": "Wk2",
@@ -3019,7 +3026,7 @@ var BILLS = [
   },
   {
     "id": "kids_allowance_isaiah_02",
-    "uid": "r247",
+    "uid": "r261",
     "name": "kids_allowance_isaiah",
     "sub": "kids_allowance_isaiah",
     "week": "Wk2",
@@ -3037,7 +3044,7 @@ var BILLS = [
   },
   {
     "id": "kids_school_purchases_fieldtrip",
-    "uid": "r248",
+    "uid": "r262",
     "name": "kids_school_purchases_fieldtrip",
     "sub": "kids_school_purchases_fieldtrip",
     "week": "Wk2",
@@ -3055,7 +3062,7 @@ var BILLS = [
   },
   {
     "id": "clothes_chris",
-    "uid": "r249",
+    "uid": "r263",
     "name": "clothes_chris",
     "sub": "clothes_chris",
     "week": "Wk3",
@@ -3073,7 +3080,7 @@ var BILLS = [
   },
   {
     "id": "uncategorized",
-    "uid": "r250",
+    "uid": "r264",
     "name": "Uncategorized",
     "sub": "uncategorized",
     "week": "Wk1",
@@ -3091,7 +3098,7 @@ var BILLS = [
   },
   {
     "id": "entertainment_datenight",
-    "uid": "r252",
+    "uid": "r266",
     "name": "Date Night",
     "sub": "entertainment_datenight",
     "week": "Wk1",
@@ -3109,7 +3116,7 @@ var BILLS = [
   },
   {
     "id": "income_random_income",
-    "uid": "r253",
+    "uid": "r267",
     "name": "Other Income",
     "sub": "income_random income",
     "week": "Wk1",
@@ -3127,7 +3134,7 @@ var BILLS = [
   },
   {
     "id": "home_maintenance_02",
-    "uid": "r254",
+    "uid": "r268",
     "name": "home_maintenance",
     "sub": "home_maintenance",
     "week": "Wk1",
@@ -3145,7 +3152,7 @@ var BILLS = [
   },
   {
     "id": "uncategorized_02",
-    "uid": "r255",
+    "uid": "r269",
     "name": "Uncategorized",
     "sub": "uncategorized",
     "week": "Wk2",
@@ -3163,7 +3170,7 @@ var BILLS = [
   },
   {
     "id": "kids_allowance_isaiah_03",
-    "uid": "r258",
+    "uid": "r272",
     "name": "kids_allowance_isaiah",
     "sub": "kids_allowance_isaiah",
     "week": "Wk1",
@@ -3181,7 +3188,7 @@ var BILLS = [
   },
   {
     "id": "util_hvac",
-    "uid": "r259",
+    "uid": "r273",
     "name": "HVAC",
     "sub": "util_HVAC",
     "week": "Wk1",
@@ -3199,7 +3206,7 @@ var BILLS = [
   },
   {
     "id": "med_doctor_visits_02",
-    "uid": "r261",
+    "uid": "r275",
     "name": "med_doctor visits",
     "sub": "med_doctor visits",
     "week": "Wk1",
@@ -3217,7 +3224,7 @@ var BILLS = [
   },
   {
     "id": "kids_school_purchases_03",
-    "uid": "r262",
+    "uid": "r276",
     "name": "School Purchases",
     "sub": "kids_school_purchases",
     "week": "Wk2",
@@ -3235,7 +3242,7 @@ var BILLS = [
   },
   {
     "id": "health_beauty",
-    "uid": "r263",
+    "uid": "r277",
     "name": "health_beauty",
     "sub": "health_beauty",
     "week": "Wk2",
@@ -3253,7 +3260,7 @@ var BILLS = [
   },
   {
     "id": "random_amazon_03",
-    "uid": "r264",
+    "uid": "r278",
     "name": "random_amazon",
     "sub": "random_amazon",
     "week": "Wk3",
@@ -3271,7 +3278,7 @@ var BILLS = [
   },
   {
     "id": "entertainment_familynight",
-    "uid": "r265",
+    "uid": "r279",
     "name": "Family Night",
     "sub": "entertainment_familynight",
     "week": "Wk3",
@@ -3289,7 +3296,7 @@ var BILLS = [
   },
   {
     "id": "entertainment_vacation",
-    "uid": "r266",
+    "uid": "r280",
     "name": "entertainment_vacation",
     "sub": "entertainment_vacation",
     "week": "Wk3",
@@ -3307,7 +3314,7 @@ var BILLS = [
   },
   {
     "id": "uncategorized_03",
-    "uid": "r267",
+    "uid": "r281",
     "name": "Uncategorized",
     "sub": "uncategorized",
     "week": "Wk3",
@@ -3325,7 +3332,7 @@ var BILLS = [
   },
   {
     "id": "entertainment_familynight_02",
-    "uid": "r268",
+    "uid": "r282",
     "name": "Family Night",
     "sub": "entertainment_familynight",
     "week": "Wk2",
@@ -3343,7 +3350,7 @@ var BILLS = [
   },
   {
     "id": "entertainment_familynight_03",
-    "uid": "r269",
+    "uid": "r283",
     "name": "Family Night",
     "sub": "entertainment_familynight",
     "week": "Wk1",
@@ -3361,7 +3368,7 @@ var BILLS = [
   },
   {
     "id": "clothes_inez",
-    "uid": "r270",
+    "uid": "r284",
     "name": "clothes_inez",
     "sub": "clothes_inez",
     "week": "Wk1",
@@ -3379,7 +3386,7 @@ var BILLS = [
   },
   {
     "id": "income_from_charlotte",
-    "uid": "r271",
+    "uid": "r285",
     "name": "From Charlotte",
     "sub": "income_from charlotte",
     "week": "Wk2",
@@ -3397,7 +3404,7 @@ var BILLS = [
   },
   {
     "id": "random_gifts",
-    "uid": "r272",
+    "uid": "r286",
     "name": "random_gifts",
     "sub": "random_gifts",
     "week": "Wk2",
@@ -3415,7 +3422,7 @@ var BILLS = [
   },
   {
     "id": "util_hvac_02",
-    "uid": "r273",
+    "uid": "r287",
     "name": "HVAC",
     "sub": "util_HVAC",
     "week": "Wk2",
@@ -3433,7 +3440,7 @@ var BILLS = [
   },
   {
     "id": "home_maintenance_03",
-    "uid": "r274",
+    "uid": "r288",
     "name": "home_maintenance",
     "sub": "home_maintenance",
     "week": "Wk2",
@@ -3859,7 +3866,7 @@ var FB = (function(){
   };
 
   // EDITABLE PER MONTH: update to budget/bills/{month_key}
-  var SESSION_KEY = 'budget/bills/nov_2026_r3'; // EDITABLE: update to budget/bills/{month_key} // EDITABLE: update to budget/bills/{month_key}
+  var SESSION_KEY = 'budget/bills/nov_2026_r4'; // EDITABLE: update to budget/bills/{month_key} // EDITABLE: update to budget/bills/{month_key}
 
   var _db = null, _sessionRef = null, _writeTimer = null;
   var _lastSavedAt = null, _initialized = false, _listenerOn = false;
@@ -4131,7 +4138,7 @@ var WEEK_DATA = {
   "weeks": {
     "Wk1": [
       {
-        "id": "t2-r176",
+        "id": "t2-r190",
         "source": "theoretical",
         "week": "Wk1",
         "date": "2026-11-01",
@@ -4150,7 +4157,7 @@ var WEEK_DATA = {
         "tier": "firm"
       },
       {
-        "id": "t2-r177",
+        "id": "t2-r191",
         "source": "theoretical",
         "week": "Wk1",
         "date": "2026-11-01",
@@ -4720,7 +4727,7 @@ var WEEK_DATA = {
         "tier": "firm"
       },
       {
-        "id": "t2-r175",
+        "id": "t2-r189",
         "source": "theoretical",
         "week": "Wk1",
         "date": "2026-11-02",
@@ -4739,7 +4746,7 @@ var WEEK_DATA = {
         "tier": "firm"
       },
       {
-        "id": "t2-r179",
+        "id": "t2-r193",
         "source": "theoretical",
         "week": "Wk1",
         "date": "2026-11-02",
@@ -4758,7 +4765,7 @@ var WEEK_DATA = {
         "tier": "firm"
       },
       {
-        "id": "t2-r184",
+        "id": "t2-r198",
         "source": "theoretical",
         "week": "Wk1",
         "date": "2026-11-02",
@@ -4777,7 +4784,7 @@ var WEEK_DATA = {
         "tier": "firm"
       },
       {
-        "id": "t2-110326.171-r225",
+        "id": "t2-110326.171-r239",
         "source": "theoretical",
         "week": "Wk1",
         "date": "2026-11-02",
@@ -4796,7 +4803,7 @@ var WEEK_DATA = {
         "tier": "firm"
       },
       {
-        "id": "t2-r226",
+        "id": "t2-r240",
         "source": "theoretical",
         "week": "Wk1",
         "date": "2026-11-02",
@@ -4815,7 +4822,7 @@ var WEEK_DATA = {
         "tier": "firm"
       },
       {
-        "id": "t2-r228",
+        "id": "t2-r242",
         "source": "theoretical",
         "week": "Wk1",
         "date": "2026-11-02",
@@ -4834,7 +4841,7 @@ var WEEK_DATA = {
         "tier": "firm"
       },
       {
-        "id": "t2-r231",
+        "id": "t2-r245",
         "source": "theoretical",
         "week": "Wk1",
         "date": "2026-11-02",
@@ -4853,7 +4860,7 @@ var WEEK_DATA = {
         "tier": "firm"
       },
       {
-        "id": "t2-r241",
+        "id": "t2-r255",
         "source": "theoretical",
         "week": "Wk1",
         "date": "2026-11-02",
@@ -4872,7 +4879,7 @@ var WEEK_DATA = {
         "tier": "firm"
       },
       {
-        "id": "t2-r270",
+        "id": "t2-r284",
         "source": "theoretical",
         "week": "Wk1",
         "date": "2026-11-02",
@@ -5024,7 +5031,7 @@ var WEEK_DATA = {
         "tier": "firm"
       },
       {
-        "id": "t2-110326.212-r178",
+        "id": "t2-110326.212-r192",
         "source": "theoretical",
         "week": "Wk1",
         "date": "2026-11-03",
@@ -5043,7 +5050,7 @@ var WEEK_DATA = {
         "tier": "firm"
       },
       {
-        "id": "t2-110326.207-r223",
+        "id": "t2-110326.207-r237",
         "source": "theoretical",
         "week": "Wk1",
         "date": "2026-11-03",
@@ -5062,7 +5069,7 @@ var WEEK_DATA = {
         "tier": "firm"
       },
       {
-        "id": "t2-110326.208-r224",
+        "id": "t2-110326.208-r238",
         "source": "theoretical",
         "week": "Wk1",
         "date": "2026-11-03",
@@ -5081,7 +5088,7 @@ var WEEK_DATA = {
         "tier": "firm"
       },
       {
-        "id": "t2-r254",
+        "id": "t2-r268",
         "source": "theoretical",
         "week": "Wk1",
         "date": "2026-11-03",
@@ -5385,7 +5392,7 @@ var WEEK_DATA = {
         "tier": "firm"
       },
       {
-        "id": "t2-r222",
+        "id": "t2-r236",
         "source": "theoretical",
         "week": "Wk1",
         "date": "2026-11-05",
@@ -5404,7 +5411,7 @@ var WEEK_DATA = {
         "tier": "firm"
       },
       {
-        "id": "t2-r227",
+        "id": "t2-r241",
         "source": "theoretical",
         "week": "Wk1",
         "date": "2026-11-05",
@@ -5423,7 +5430,7 @@ var WEEK_DATA = {
         "tier": "firm"
       },
       {
-        "id": "t2-r245",
+        "id": "t2-r259",
         "source": "theoretical",
         "week": "Wk1",
         "date": "2026-11-05",
@@ -5442,7 +5449,7 @@ var WEEK_DATA = {
         "tier": "firm"
       },
       {
-        "id": "t2-r250",
+        "id": "t2-r264",
         "source": "theoretical",
         "week": "Wk1",
         "date": "2026-11-05",
@@ -5461,7 +5468,7 @@ var WEEK_DATA = {
         "tier": "firm"
       },
       {
-        "id": "t2-r253",
+        "id": "t2-r267",
         "source": "theoretical",
         "week": "Wk1",
         "date": "2026-11-05",
@@ -5480,7 +5487,7 @@ var WEEK_DATA = {
         "tier": "firm"
       },
       {
-        "id": "t2-r269",
+        "id": "t2-r283",
         "source": "theoretical",
         "week": "Wk1",
         "date": "2026-11-05",
@@ -5632,7 +5639,7 @@ var WEEK_DATA = {
         "tier": "firm"
       },
       {
-        "id": "t2-r197",
+        "id": "t2-r211",
         "source": "theoretical",
         "week": "Wk1",
         "date": "2026-11-06",
@@ -5651,7 +5658,7 @@ var WEEK_DATA = {
         "tier": "firm"
       },
       {
-        "id": "t2-r203",
+        "id": "t2-r217",
         "source": "theoretical",
         "week": "Wk1",
         "date": "2026-11-06",
@@ -5670,7 +5677,7 @@ var WEEK_DATA = {
         "tier": "firm"
       },
       {
-        "id": "t2-r219",
+        "id": "t2-r233",
         "source": "theoretical",
         "week": "Wk1",
         "date": "2026-11-06",
@@ -5689,7 +5696,7 @@ var WEEK_DATA = {
         "tier": "firm"
       },
       {
-        "id": "t2-r244",
+        "id": "t2-r258",
         "source": "theoretical",
         "week": "Wk1",
         "date": "2026-11-06",
@@ -5708,7 +5715,7 @@ var WEEK_DATA = {
         "tier": "firm"
       },
       {
-        "id": "t2-r252",
+        "id": "t2-r266",
         "source": "theoretical",
         "week": "Wk1",
         "date": "2026-11-06",
@@ -5727,7 +5734,7 @@ var WEEK_DATA = {
         "tier": "firm"
       },
       {
-        "id": "t2-r258",
+        "id": "t2-r272",
         "source": "theoretical",
         "week": "Wk1",
         "date": "2026-11-06",
@@ -5746,7 +5753,7 @@ var WEEK_DATA = {
         "tier": "firm"
       },
       {
-        "id": "t2-r259",
+        "id": "t2-r273",
         "source": "theoretical",
         "week": "Wk1",
         "date": "2026-11-06",
@@ -5765,7 +5772,7 @@ var WEEK_DATA = {
         "tier": "firm"
       },
       {
-        "id": "t2-r261",
+        "id": "t2-r275",
         "source": "theoretical",
         "week": "Wk1",
         "date": "2026-11-06",
@@ -6204,7 +6211,7 @@ var WEEK_DATA = {
         "tier": "firm"
       },
       {
-        "id": "t2-r180",
+        "id": "t2-r194",
         "source": "theoretical",
         "week": "Wk2",
         "date": "2026-11-09",
@@ -6223,7 +6230,7 @@ var WEEK_DATA = {
         "tier": "firm"
       },
       {
-        "id": "t2-r221",
+        "id": "t2-r235",
         "source": "theoretical",
         "week": "Wk2",
         "date": "2026-11-09",
@@ -6242,7 +6249,7 @@ var WEEK_DATA = {
         "tier": "firm"
       },
       {
-        "id": "t2-r232",
+        "id": "t2-r246",
         "source": "theoretical",
         "week": "Wk2",
         "date": "2026-11-09",
@@ -6261,7 +6268,7 @@ var WEEK_DATA = {
         "tier": "firm"
       },
       {
-        "id": "t2-r235",
+        "id": "t2-r249",
         "source": "theoretical",
         "week": "Wk2",
         "date": "2026-11-09",
@@ -6280,7 +6287,7 @@ var WEEK_DATA = {
         "tier": "firm"
       },
       {
-        "id": "t2-r247",
+        "id": "t2-r261",
         "source": "theoretical",
         "week": "Wk2",
         "date": "2026-11-09",
@@ -6299,7 +6306,7 @@ var WEEK_DATA = {
         "tier": "firm"
       },
       {
-        "id": "t2-r248",
+        "id": "t2-r262",
         "source": "theoretical",
         "week": "Wk2",
         "date": "2026-11-09",
@@ -6318,7 +6325,7 @@ var WEEK_DATA = {
         "tier": "firm"
       },
       {
-        "id": "t2-r262",
+        "id": "t2-r276",
         "source": "theoretical",
         "week": "Wk2",
         "date": "2026-11-09",
@@ -6337,7 +6344,7 @@ var WEEK_DATA = {
         "tier": "firm"
       },
       {
-        "id": "t2-r263",
+        "id": "t2-r277",
         "source": "theoretical",
         "week": "Wk2",
         "date": "2026-11-09",
@@ -6356,7 +6363,7 @@ var WEEK_DATA = {
         "tier": "firm"
       },
       {
-        "id": "t2-r268",
+        "id": "t2-r282",
         "source": "theoretical",
         "week": "Wk2",
         "date": "2026-11-09",
@@ -6470,7 +6477,7 @@ var WEEK_DATA = {
         "tier": "firm"
       },
       {
-        "id": "t2-r201",
+        "id": "t2-r215",
         "source": "theoretical",
         "week": "Wk2",
         "date": "2026-11-10",
@@ -6489,7 +6496,7 @@ var WEEK_DATA = {
         "tier": "firm"
       },
       {
-        "id": "t2-r237",
+        "id": "t2-r251",
         "source": "theoretical",
         "week": "Wk2",
         "date": "2026-11-10",
@@ -6508,7 +6515,7 @@ var WEEK_DATA = {
         "tier": "firm"
       },
       {
-        "id": "t2-r238",
+        "id": "t2-r252",
         "source": "theoretical",
         "week": "Wk2",
         "date": "2026-11-10",
@@ -6527,7 +6534,7 @@ var WEEK_DATA = {
         "tier": "firm"
       },
       {
-        "id": "t2-r242",
+        "id": "t2-r256",
         "source": "theoretical",
         "week": "Wk2",
         "date": "2026-11-10",
@@ -6603,7 +6610,7 @@ var WEEK_DATA = {
         "tier": "firm"
       },
       {
-        "id": "t2-r181",
+        "id": "t2-r195",
         "source": "theoretical",
         "week": "Wk2",
         "date": "2026-11-11",
@@ -6717,7 +6724,7 @@ var WEEK_DATA = {
         "tier": "firm"
       },
       {
-        "id": "t2-r190",
+        "id": "t2-r204",
         "source": "theoretical",
         "week": "Wk2",
         "date": "2026-11-12",
@@ -6736,7 +6743,7 @@ var WEEK_DATA = {
         "tier": "firm"
       },
       {
-        "id": "t2-r229",
+        "id": "t2-r243",
         "source": "theoretical",
         "week": "Wk2",
         "date": "2026-11-12",
@@ -6755,7 +6762,7 @@ var WEEK_DATA = {
         "tier": "firm"
       },
       {
-        "id": "t2-r255",
+        "id": "t2-r269",
         "source": "theoretical",
         "week": "Wk2",
         "date": "2026-11-12",
@@ -6907,7 +6914,7 @@ var WEEK_DATA = {
         "tier": "firm"
       },
       {
-        "id": "t2-r240",
+        "id": "t2-r254",
         "source": "theoretical",
         "week": "Wk2",
         "date": "2026-11-13",
@@ -6926,7 +6933,7 @@ var WEEK_DATA = {
         "tier": "firm"
       },
       {
-        "id": "t2-r243",
+        "id": "t2-r257",
         "source": "theoretical",
         "week": "Wk2",
         "date": "2026-11-13",
@@ -6945,7 +6952,7 @@ var WEEK_DATA = {
         "tier": "firm"
       },
       {
-        "id": "t2-r246",
+        "id": "t2-r260",
         "source": "theoretical",
         "week": "Wk2",
         "date": "2026-11-13",
@@ -6964,7 +6971,7 @@ var WEEK_DATA = {
         "tier": "firm"
       },
       {
-        "id": "t2-r271",
+        "id": "t2-r285",
         "source": "theoretical",
         "week": "Wk2",
         "date": "2026-11-13",
@@ -6983,7 +6990,7 @@ var WEEK_DATA = {
         "tier": "firm"
       },
       {
-        "id": "t2-r272",
+        "id": "t2-r286",
         "source": "theoretical",
         "week": "Wk2",
         "date": "2026-11-13",
@@ -7002,7 +7009,7 @@ var WEEK_DATA = {
         "tier": "firm"
       },
       {
-        "id": "t2-r273",
+        "id": "t2-r287",
         "source": "theoretical",
         "week": "Wk2",
         "date": "2026-11-13",
@@ -7021,7 +7028,7 @@ var WEEK_DATA = {
         "tier": "firm"
       },
       {
-        "id": "t2-r274",
+        "id": "t2-r288",
         "source": "theoretical",
         "week": "Wk2",
         "date": "2026-11-13",
@@ -7040,7 +7047,7 @@ var WEEK_DATA = {
         "tier": "firm"
       },
       {
-        "id": "t2-r170",
+        "id": "t2-r184",
         "source": "theoretical",
         "week": "Wk2",
         "date": "2026-11-15",
@@ -7059,7 +7066,7 @@ var WEEK_DATA = {
         "tier": "firm"
       },
       {
-        "id": "t2-r199",
+        "id": "t2-r213",
         "source": "theoretical",
         "week": "Wk2",
         "date": "2026-11-15",
@@ -7079,63 +7086,6 @@ var WEEK_DATA = {
       }
     ],
     "Wk3": [
-      {
-        "id": "t2-r214",
-        "source": "theoretical",
-        "week": "Wk3",
-        "date": "2026-11-07",
-        "cat_logistics": "HOME EXPENSES",
-        "cat_sub": "util_phone",
-        "cat_main": "UTIL",
-        "debit": 105.96,
-        "credit": 0,
-        "account": "",
-        "acct": "",
-        "description": "due on 07 th of every month",
-        "mint_orig": "",
-        "purch2": "",
-        "schedule": "01_PER1",
-        "tag_income": "income_1_LOW",
-        "tier": "firm"
-      },
-      {
-        "id": "t2-011525.076-r212",
-        "source": "theoretical",
-        "week": "Wk3",
-        "date": "2026-11-10",
-        "cat_logistics": "HOME EXPENSES",
-        "cat_sub": "util_country-fi_homeinsurance",
-        "cat_main": "UTIL",
-        "debit": 247.28,
-        "credit": 0,
-        "account": "",
-        "acct": "",
-        "description": "due on 12 th of every month",
-        "mint_orig": "CCS COUNTRY FINANC|MERCHANT PURCHASE TERMINAL 469216 CCS COUNTRY FINANC IAL 866 268 6 IL SEQ # 600923109190 XXXXXXXXXXXX9935",
-        "purch2": "",
-        "schedule": "01_PER1",
-        "tag_income": "income_1_LOW",
-        "tier": "firm"
-      },
-      {
-        "id": "t2-r186",
-        "source": "theoretical",
-        "week": "Wk3",
-        "date": "2026-11-13",
-        "cat_logistics": "HOME EXPENSES",
-        "cat_sub": "debt_payment_lge_autoloan_2024chryslerpacifica",
-        "cat_main": "DEBT",
-        "debit": 720,
-        "credit": 0,
-        "account": "",
-        "acct": "",
-        "description": "due on 13 th of every month",
-        "mint_orig": "",
-        "purch2": "",
-        "schedule": "01_PER1",
-        "tag_income": "income_1_LOW",
-        "tier": "firm"
-      },
       {
         "id": "t1-111626.015",
         "source": "actual",
@@ -7555,7 +7505,45 @@ var WEEK_DATA = {
         "tier": "firm"
       },
       {
-        "id": "t2-r209",
+        "id": "t2-r199",
+        "source": "theoretical",
+        "week": "Wk3",
+        "date": "2026-11-16",
+        "cat_logistics": "HOME EXPENSES",
+        "cat_sub": "credit_payment_credit cards_chase_amazon",
+        "cat_main": "CREDIT",
+        "debit": 100,
+        "credit": 0,
+        "account": "",
+        "acct": "",
+        "description": "due on 18 th of every month",
+        "mint_orig": "",
+        "purch2": "",
+        "schedule": "01_PER1",
+        "tag_income": "income_1_LOW",
+        "tier": "firm"
+      },
+      {
+        "id": "t2-r200",
+        "source": "theoretical",
+        "week": "Wk3",
+        "date": "2026-11-16",
+        "cat_logistics": "HOME EXPENSES",
+        "cat_sub": "debt_payment_lge_autoloan_2024chryslerpacifica",
+        "cat_main": "DEBT",
+        "debit": 720,
+        "credit": 0,
+        "account": "",
+        "acct": "",
+        "description": "due on 13 th of every month",
+        "mint_orig": "",
+        "purch2": "",
+        "schedule": "01_PER1",
+        "tag_income": "income_1_LOW",
+        "tier": "firm"
+      },
+      {
+        "id": "t2-r223",
         "source": "theoretical",
         "week": "Wk3",
         "date": "2026-11-16",
@@ -7574,7 +7562,26 @@ var WEEK_DATA = {
         "tier": "firm"
       },
       {
-        "id": "t2-r213",
+        "id": "t2-011525.076-r226",
+        "source": "theoretical",
+        "week": "Wk3",
+        "date": "2026-11-16",
+        "cat_logistics": "HOME EXPENSES",
+        "cat_sub": "util_country-fi_homeinsurance",
+        "cat_main": "UTIL",
+        "debit": 247.28,
+        "credit": 0,
+        "account": "",
+        "acct": "",
+        "description": "due on 12 th of every month",
+        "mint_orig": "CCS COUNTRY FINANC|MERCHANT PURCHASE TERMINAL 469216 CCS COUNTRY FINANC IAL 866 268 6 IL SEQ # 600923109190 XXXXXXXXXXXX9935",
+        "purch2": "",
+        "schedule": "01_PER1",
+        "tag_income": "income_1_LOW",
+        "tier": "firm"
+      },
+      {
+        "id": "t2-r227",
         "source": "theoretical",
         "week": "Wk3",
         "date": "2026-11-16",
@@ -7593,7 +7600,26 @@ var WEEK_DATA = {
         "tier": "firm"
       },
       {
-        "id": "t2-r215",
+        "id": "t2-r228",
+        "source": "theoretical",
+        "week": "Wk3",
+        "date": "2026-11-16",
+        "cat_logistics": "HOME EXPENSES",
+        "cat_sub": "util_phone",
+        "cat_main": "UTIL",
+        "debit": 105.96,
+        "credit": 0,
+        "account": "",
+        "acct": "",
+        "description": "due on 07 th of every month",
+        "mint_orig": "",
+        "purch2": "",
+        "schedule": "01_PER1",
+        "tag_income": "income_1_LOW",
+        "tier": "firm"
+      },
+      {
+        "id": "t2-r229",
         "source": "theoretical",
         "week": "Wk3",
         "date": "2026-11-16",
@@ -7612,7 +7638,7 @@ var WEEK_DATA = {
         "tier": "firm"
       },
       {
-        "id": "t2-r220",
+        "id": "t2-r234",
         "source": "theoretical",
         "week": "Wk3",
         "date": "2026-11-16",
@@ -7631,7 +7657,7 @@ var WEEK_DATA = {
         "tier": "firm"
       },
       {
-        "id": "t2-r230",
+        "id": "t2-r244",
         "source": "theoretical",
         "week": "Wk3",
         "date": "2026-11-16",
@@ -7650,7 +7676,7 @@ var WEEK_DATA = {
         "tier": "firm"
       },
       {
-        "id": "t2-r233",
+        "id": "t2-r247",
         "source": "theoretical",
         "week": "Wk3",
         "date": "2026-11-16",
@@ -7669,7 +7695,7 @@ var WEEK_DATA = {
         "tier": "firm"
       },
       {
-        "id": "t2-r234",
+        "id": "t2-r248",
         "source": "theoretical",
         "week": "Wk3",
         "date": "2026-11-16",
@@ -7688,7 +7714,7 @@ var WEEK_DATA = {
         "tier": "firm"
       },
       {
-        "id": "t2-r236",
+        "id": "t2-r250",
         "source": "theoretical",
         "week": "Wk3",
         "date": "2026-11-16",
@@ -7707,7 +7733,7 @@ var WEEK_DATA = {
         "tier": "firm"
       },
       {
-        "id": "t2-r239",
+        "id": "t2-r253",
         "source": "theoretical",
         "week": "Wk3",
         "date": "2026-11-16",
@@ -7726,7 +7752,7 @@ var WEEK_DATA = {
         "tier": "firm"
       },
       {
-        "id": "t2-r249",
+        "id": "t2-r263",
         "source": "theoretical",
         "week": "Wk3",
         "date": "2026-11-16",
@@ -7745,7 +7771,7 @@ var WEEK_DATA = {
         "tier": "firm"
       },
       {
-        "id": "t2-r264",
+        "id": "t2-r278",
         "source": "theoretical",
         "week": "Wk3",
         "date": "2026-11-16",
@@ -7764,7 +7790,7 @@ var WEEK_DATA = {
         "tier": "firm"
       },
       {
-        "id": "t2-r265",
+        "id": "t2-r279",
         "source": "theoretical",
         "week": "Wk3",
         "date": "2026-11-16",
@@ -7783,7 +7809,7 @@ var WEEK_DATA = {
         "tier": "firm"
       },
       {
-        "id": "t2-r266",
+        "id": "t2-r280",
         "source": "theoretical",
         "week": "Wk3",
         "date": "2026-11-16",
@@ -7802,7 +7828,7 @@ var WEEK_DATA = {
         "tier": "firm"
       },
       {
-        "id": "t2-r267",
+        "id": "t2-r281",
         "source": "theoretical",
         "week": "Wk3",
         "date": "2026-11-16",
@@ -7821,7 +7847,7 @@ var WEEK_DATA = {
         "tier": "firm"
       },
       {
-        "id": "t2-r188",
+        "id": "t2-r202",
         "source": "theoretical",
         "week": "Wk3",
         "date": "2026-11-17",
@@ -7840,7 +7866,7 @@ var WEEK_DATA = {
         "tier": "firm"
       },
       {
-        "id": "t2-r182",
+        "id": "t2-r196",
         "source": "theoretical",
         "week": "Wk3",
         "date": "2026-11-18",
@@ -7859,26 +7885,7 @@ var WEEK_DATA = {
         "tier": "firm"
       },
       {
-        "id": "t2-r185",
-        "source": "theoretical",
-        "week": "Wk3",
-        "date": "2026-11-18",
-        "cat_logistics": "HOME EXPENSES",
-        "cat_sub": "credit_payment_credit cards_chase_amazon",
-        "cat_main": "CREDIT",
-        "debit": 100,
-        "credit": 0,
-        "account": "",
-        "acct": "",
-        "description": "due on 18 th of every month",
-        "mint_orig": "",
-        "purch2": "",
-        "schedule": "01_PER1",
-        "tag_income": "income_1_LOW",
-        "tier": "firm"
-      },
-      {
-        "id": "t2-r183",
+        "id": "t2-r197",
         "source": "theoretical",
         "week": "Wk3",
         "date": "2026-11-20",
@@ -7897,7 +7904,7 @@ var WEEK_DATA = {
         "tier": "firm"
       },
       {
-        "id": "t2-r193",
+        "id": "t2-r207",
         "source": "theoretical",
         "week": "Wk3",
         "date": "2026-11-20",
@@ -7916,7 +7923,7 @@ var WEEK_DATA = {
         "tier": "firm"
       },
       {
-        "id": "t2-r198",
+        "id": "t2-r212",
         "source": "theoretical",
         "week": "Wk3",
         "date": "2026-11-20",
@@ -7935,7 +7942,7 @@ var WEEK_DATA = {
         "tier": "firm"
       },
       {
-        "id": "t2-r171",
+        "id": "t2-r185",
         "source": "theoretical",
         "week": "Wk3",
         "date": "2026-11-22",
@@ -7954,7 +7961,7 @@ var WEEK_DATA = {
         "tier": "firm"
       },
       {
-        "id": "t2-r216",
+        "id": "t2-r230",
         "source": "theoretical",
         "week": "Wk3",
         "date": "2026-11-24",
@@ -7975,7 +7982,7 @@ var WEEK_DATA = {
     ],
     "Wk4": [
       {
-        "id": "t2-r200",
+        "id": "t2-r214",
         "source": "theoretical",
         "week": "Wk4",
         "date": "2026-11-23",
@@ -7994,7 +8001,7 @@ var WEEK_DATA = {
         "tier": "firm"
       },
       {
-        "id": "t2-r217",
+        "id": "t2-r231",
         "source": "theoretical",
         "week": "Wk4",
         "date": "2026-11-26",
@@ -8013,7 +8020,7 @@ var WEEK_DATA = {
         "tier": "firm"
       },
       {
-        "id": "t2-r207",
+        "id": "t2-r221",
         "source": "theoretical",
         "week": "Wk4",
         "date": "2026-11-27",
@@ -8032,7 +8039,7 @@ var WEEK_DATA = {
         "tier": "firm"
       },
       {
-        "id": "t2-r218",
+        "id": "t2-r232",
         "source": "theoretical",
         "week": "Wk4",
         "date": "2026-11-27",
@@ -8051,7 +8058,7 @@ var WEEK_DATA = {
         "tier": "firm"
       },
       {
-        "id": "t2-r187",
+        "id": "t2-r201",
         "source": "theoretical",
         "week": "Wk4",
         "date": "2026-11-28",
@@ -8070,7 +8077,7 @@ var WEEK_DATA = {
         "tier": "firm"
       },
       {
-        "id": "t2-r172",
+        "id": "t2-r186",
         "source": "theoretical",
         "week": "Wk4",
         "date": "2026-11-29",
@@ -8089,7 +8096,7 @@ var WEEK_DATA = {
         "tier": "firm"
       },
       {
-        "id": "t2-r194",
+        "id": "t2-r208",
         "source": "theoretical",
         "week": "Wk4",
         "date": "2026-11-29",
@@ -8108,7 +8115,7 @@ var WEEK_DATA = {
         "tier": "firm"
       },
       {
-        "id": "t2-r211",
+        "id": "t2-r225",
         "source": "theoretical",
         "week": "Wk4",
         "date": "2026-11-29",
@@ -8127,7 +8134,7 @@ var WEEK_DATA = {
         "tier": "firm"
       },
       {
-        "id": "t2-r189",
+        "id": "t2-r203",
         "source": "theoretical",
         "week": "Wk4",
         "date": "2026-11-30",
@@ -8146,7 +8153,7 @@ var WEEK_DATA = {
         "tier": "firm"
       },
       {
-        "id": "t2-r192",
+        "id": "t2-r206",
         "source": "theoretical",
         "week": "Wk4",
         "date": "2026-11-30",
@@ -8165,7 +8172,7 @@ var WEEK_DATA = {
         "tier": "firm"
       },
       {
-        "id": "t2-r195",
+        "id": "t2-r209",
         "source": "theoretical",
         "week": "Wk4",
         "date": "2026-11-30",
@@ -8184,7 +8191,7 @@ var WEEK_DATA = {
         "tier": "firm"
       },
       {
-        "id": "t2-r210",
+        "id": "t2-r224",
         "source": "theoretical",
         "week": "Wk4",
         "date": "2026-11-30",
@@ -8205,7 +8212,7 @@ var WEEK_DATA = {
     ],
     "Wk5": [
       {
-        "id": "t2-r174",
+        "id": "t2-r188",
         "source": "theoretical",
         "week": "Wk5",
         "date": "2026-11-15",
@@ -8224,7 +8231,7 @@ var WEEK_DATA = {
         "tier": "firm"
       },
       {
-        "id": "t2-r173",
+        "id": "t2-r187",
         "source": "theoretical",
         "week": "Wk5",
         "date": "2026-11-30",
@@ -8243,7 +8250,7 @@ var WEEK_DATA = {
         "tier": "firm"
       },
       {
-        "id": "t2-r196",
+        "id": "t2-r210",
         "source": "theoretical",
         "week": "Wk5",
         "date": "2026-11-30",
@@ -8262,7 +8269,7 @@ var WEEK_DATA = {
         "tier": "firm"
       },
       {
-        "id": "t2-r202",
+        "id": "t2-r216",
         "source": "theoretical",
         "week": "Wk5",
         "date": "2026-11-30",
@@ -8281,7 +8288,7 @@ var WEEK_DATA = {
         "tier": "contingent"
       },
       {
-        "id": "t2-r204",
+        "id": "t2-r218",
         "source": "theoretical",
         "week": "Wk5",
         "date": "2026-11-30",
@@ -8300,7 +8307,7 @@ var WEEK_DATA = {
         "tier": "firm"
       },
       {
-        "id": "t2-r205",
+        "id": "t2-r219",
         "source": "theoretical",
         "week": "Wk5",
         "date": "2026-11-30",
@@ -8319,7 +8326,7 @@ var WEEK_DATA = {
         "tier": "firm"
       },
       {
-        "id": "t2-r206",
+        "id": "t2-r220",
         "source": "theoretical",
         "week": "Wk5",
         "date": "2026-11-30",
@@ -8338,7 +8345,7 @@ var WEEK_DATA = {
         "tier": "firm"
       },
       {
-        "id": "t2-r208",
+        "id": "t2-r222",
         "source": "theoretical",
         "week": "Wk5",
         "date": "2026-11-30",
@@ -8464,13 +8471,13 @@ var CAT_MAP   = {
   ]
 };
 var ACCT_BALANCES = {
-  "boa joint": 295.78,
-  "boa hamly": 29.17,
+  "boa joint": 1867.56,
+  "boa hamly": 15.82,
   "ameris macs tax": 156.36,
   "ameris macs rox": 1,
-  "delta pay from": 185.64,
-  "delta savings": 151.03,
-  "delta money market": 2401.42
+  "delta pay from": 460.94,
+  "delta savings": 301.03,
+  "delta money market": 2701.42
 };
 // [END INJECT WEEK_DATA]
 </script>
@@ -11504,6 +11511,50 @@ var ACCT_BALANCES = {
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else setTimeout(init, 0);
   window.renderStaged = function() { render(); };
+})();
+</script>
+
+<script>
+// ============================================================================
+// UPDATE CHECK
+// Phones that "Add to Home Screen" often keep this page suspended in memory
+// and reuse it instead of refetching, so a new git push can sit unnoticed for
+// days. This polls the page's own Last-Modified/ETag (via a no-store HEAD
+// request — no service worker needed) and prompts a reload when it changes,
+// both on a timer and whenever the app comes back to the foreground. Ported
+// verbatim from ignite-trip-app's index.html (built 2026-11-09) - see that
+// repo's README/AGENTS.md if this ever needs changing; keep both in sync.
+// ============================================================================
+function hardReload(){ location.href = location.pathname + '?v=' + Date.now(); }
+(function(){
+  var CHECK_INTERVAL_MS = 5*60*1000;
+  var _knownTag = null;
+
+  function check(){
+    fetch(location.pathname, {method:'HEAD', cache:'no-store'}).then(function(r){
+      var tag = r.headers.get('etag') || r.headers.get('last-modified');
+      if(!tag) return;
+      if(_knownTag && tag !== _knownTag) showBanner();
+      _knownTag = tag;
+    }).catch(function(){});
+  }
+
+  function showBanner(){
+    if(document.getElementById('updateBanner')) return;
+    var b = document.createElement('div');
+    b.id = 'updateBanner';
+    b.className = 'update-banner';
+    b.textContent = 'A new version is available — tap to reload';
+    b.onclick = hardReload;
+    document.body.appendChild(b);
+  }
+
+  check();
+  setInterval(check, CHECK_INTERVAL_MS);
+  document.addEventListener('visibilitychange', function(){
+    if(document.visibilityState === 'visible') check();
+  });
+  window.addEventListener('pageshow', check);
 })();
 </script>
 

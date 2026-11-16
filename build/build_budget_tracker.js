@@ -377,6 +377,14 @@ const RPT = {
 let t = fs.readFileSync(TEMPLATE, 'utf8');
 const tmplMatches = (t.match(/<!-- template v17 -->/g) || []).length;
 if (tmplMatches !== 1) throw new Error('expected exactly 1 "<!-- template v17 -->" marker, found ' + tmplMatches);
+// Standing invariant (added 2026-11-16, ported from ignite-trip-app): the
+// template must carry the home-screen-PWA update-check banner, so a future
+// template edit can't silently drop it the way nothing would otherwise
+// notice. If this ever legitimately needs to change, update both this
+// check and the matching feature in ignite-trip-app's index.html together.
+if (!t.includes('UPDATE CHECK') || !t.includes('function hardReload()')) {
+  throw new Error('template is missing the update-check banner (UPDATE CHECK block / hardReload()) - see BUILD_AND_DEPLOY.md');
+}
 const clean = bills.map(({ _row, ...rest }) => rest);
 function J(o) { return JSON.stringify(o, null, 2); }
 function inject(txt, name, body, prefix) {

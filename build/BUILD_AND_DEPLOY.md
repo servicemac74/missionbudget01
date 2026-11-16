@@ -88,6 +88,29 @@ deploy step. Push access is via Git Credential Manager (system-level
 works the same for any tool that shells out to `git`, nothing tool-specific
 to configure.
 
+## Standing feature: home-screen PWA update-check banner
+
+Added 2026-11-16, ported from `ignite-trip-app`'s `index.html` (built
+2026-11-09 there). A phone that's "Added to Home Screen" keeps the page
+suspended in memory and reuses it instead of refetching, so a `git push`
+can go live for days without the phone ever noticing. The template carries
+a self-contained fix - no service worker, no manifest change:
+
+- A `HEAD` request to the page's own URL (`cache:'no-store'`) reads the
+  `ETag`/`Last-Modified` response header on load, every 5 minutes, on
+  `visibilitychange`, and on `pageshow`.
+- If that value ever changes from what was first seen, a small banner
+  appears ("A new version is available — tap to reload"); tapping it calls
+  `hardReload()`, which reloads with a cache-busting `?v=` query string.
+
+**This build script enforces that the template still has it** (checks for
+the `UPDATE CHECK` comment block and `hardReload()` before building - see
+the assertion right after the `<!-- template v17 -->` marker check) so a
+future template edit can't silently drop it. If you ever intentionally
+change or remove this feature, update the check in `build_budget_tracker.js`
+in the same change - and update `ignite-trip-app`'s copy too if the fix
+itself needs to change, since the two are meant to stay identical.
+
 ## Known data quirk: rolled-forward bills show a "date-in-week violation"
 
 `util_phone` and `util_country-fi_homeinsurance` (and any other due-date bill
